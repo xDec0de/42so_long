@@ -6,7 +6,7 @@
 /*   By: danimart <danimart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 10:20:33 by danimart          #+#    #+#             */
-/*   Updated: 2022/05/05 12:39:47 by danimart         ###   ########.fr       */
+/*   Updated: 2022/05/05 13:11:02 by danimart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,17 @@ void	draw_pixel(t_img *img, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-int	close_win(int keycode, t_mlx *mlx)
+int	handle_key(int keycode, t_mlx *mlx)
 {
 	if (keycode == 53)
-	{
-		mlx_destroy_window(mlx->mlx, mlx->win);
-		exit(0);
-	}
+		close_win(mlx);
 	return (0);
+}
+
+void	close_win(t_mlx *mlx)
+{
+	mlx_destroy_window(mlx->mlx, mlx->win);
+	exit(0);
 }
 
 int	main(void)
@@ -40,7 +43,7 @@ int	main(void)
 	img.img = mlx_new_image(mlx.mlx, 120, 120);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
 			&img.endian);
-	mlx_hook(mlx.win, 2, 1L << 0, close_win, &mlx);
+	mlx_key_hook(mlx.win, handle_key, &mlx);
 	mlx_put_image_to_window(mlx.mlx, mlx.win, img.img, 0, 0);
 	mlx_loop(mlx.mlx);
 }
