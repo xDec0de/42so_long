@@ -6,7 +6,7 @@
 /*   By: danimart <danimart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 12:23:44 by danimart          #+#    #+#             */
-/*   Updated: 2022/05/05 13:07:38 by danimart         ###   ########.fr       */
+/*   Updated: 2022/05/05 13:58:10 by danimart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,6 @@ typedef struct s_vars {
 void	draw_pixel(t_img *img, int x, int y, int color);
 
 int		handle_key(int keycode, t_mlx *mlx);
-void	close_win(t_mlx *mlx);
+int		close_win(t_mlx *mlx);
 
 #endif
