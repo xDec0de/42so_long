@@ -6,7 +6,7 @@
 /*   By: danimart <danimart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 10:20:33 by danimart          #+#    #+#             */
-/*   Updated: 2022/05/05 14:27:51 by danimart         ###   ########.fr       */
+/*   Updated: 2022/05/05 14:49:52 by danimart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,8 @@ int	main(int argc, char **args)
 	t_mlx	mlx;
 	t_img	img;
 
-	if (argc != 2)
+	if (argc != 2 || parse_map_input(args))
 		close_win(&mlx, 1);
-	**args = **args;
 	mlx.mlx = mlx_init();
 	mlx.win = mlx_new_window(mlx.mlx, 120, 120, "so_long");
 	img.img = mlx_new_image(mlx.mlx, 120, 120);

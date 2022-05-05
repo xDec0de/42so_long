@@ -6,7 +6,7 @@
 #    By: danimart <danimart@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/05 10:19:42 by danimart          #+#    #+#              #
-#    Updated: 2022/05/05 12:00:09 by danimart         ###   ########.fr        #
+#    Updated: 2022/05/05 15:04:52 by danimart         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME=so_long
 CC=gcc
 CFLAGS=-Wall -Werror -Wextra
 SANITIZE=-g3 -fsanitize=address
-C_FILES=so_long.c
+C_FILES=so_long.c map_reader.c
 LMLX = -lmlx -framework OpenGL -framework AppKit
 
 O_FILES=$(C_FILES:.c=.o)
