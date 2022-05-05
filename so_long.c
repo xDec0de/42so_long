@@ -6,7 +6,7 @@
 /*   By: danimart <danimart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 10:20:33 by danimart          #+#    #+#             */
-/*   Updated: 2022/05/05 13:57:50 by danimart         ###   ########.fr       */
+/*   Updated: 2022/05/05 14:27:51 by danimart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,22 +23,28 @@ void	draw_pixel(t_img *img, int x, int y, int color)
 int	handle_key(int keycode, t_mlx *mlx)
 {
 	if (keycode == 53)
-		close_win(mlx);
+		close_win(mlx, 0);
 	return (0);
 }
 
-int	close_win(t_mlx *mlx)
+int	close_win(t_mlx *mlx, int code)
 {
-	mlx_destroy_window(mlx->mlx, mlx->win);
-	exit(0);
+	if (code == 0)
+		mlx_destroy_window(mlx->mlx, mlx->win);
+	if (code == 1)
+		printf("Error\nInvalid input.\n");
+	exit(code);
 	return (0);
 }
 
-int	main(void)
+int	main(int argc, char **args)
 {
 	t_mlx	mlx;
 	t_img	img;
 
+	if (argc != 2)
+		close_win(&mlx, 1);
+	**args = **args;
 	mlx.mlx = mlx_init();
 	mlx.win = mlx_new_window(mlx.mlx, 120, 120, "so_long");
 	img.img = mlx_new_image(mlx.mlx, 120, 120);
