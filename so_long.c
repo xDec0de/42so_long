@@ -6,28 +6,13 @@
 /*   By: danimart <danimart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 10:20:33 by danimart          #+#    #+#             */
-/*   Updated: 2022/05/05 12:17:17 by danimart         ###   ########.fr       */
+/*   Updated: 2022/05/05 12:26:55 by danimart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <mlx.h>
-#include <stdio.h>
-#include <stdlib.h>
+#include "so_long.h"
 
-typedef struct s_data {
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-}				t_data;
-
-typedef struct s_vars {
-	void	*mlx;
-	void	*win;
-}				t_vars;
-
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
+void	draw_pixel(t_data *data, int x, int y, int color)
 {
 	char	*dst;
 
