@@ -6,7 +6,7 @@
 #    By: danimart <danimart@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/05 10:19:42 by danimart          #+#    #+#              #
-#    Updated: 2022/05/06 13:52:44 by danimart         ###   ########.fr        #
+#    Updated: 2022/05/06 15:45:28 by danimart         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,8 @@ CFLAGS= -DINPUT_ERR='"$(INPUT_ERR)"' -DMAP_FORMAT_ERR='"$(MAP_FORMAT_ERR)"'\
 -DMAP_CONTENT_ERR='"$(MAP_CONTENT_ERR)"' -Wall -Werror -Wextra
 
 SANITIZE=-g3 -fsanitize=address
-C_FILES=so_long.c map_reader.c gnl.c strutils.c
+C_FILES=so_long.c map_reader.c gnl.c strutils.c\
+so_long_debugger.c # Debug, remove for final version.
 LMLX = -lmlx -framework OpenGL -framework AppKit
 
 O_FILES=$(C_FILES:.c=.o)

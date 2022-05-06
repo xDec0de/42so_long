@@ -6,7 +6,7 @@
 /*   By: danimart <danimart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 10:20:33 by danimart          #+#    #+#             */
-/*   Updated: 2022/05/06 15:26:05 by danimart         ###   ########.fr       */
+/*   Updated: 2022/05/06 15:47:20 by danimart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ int	main(int argc, char **args)
 	t_img	img;
 	int		map_error;
 
+	atexit(leaks);
 	if (argc != 2)
 		close_win(1);
 	map_error = parse_map_input(args);

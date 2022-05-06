@@ -6,18 +6,18 @@
 /*   By: danimart <danimart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 10:49:41 by danimart          #+#    #+#             */
-/*   Updated: 2022/05/06 11:16:13 by danimart         ###   ########.fr       */
+/*   Updated: 2022/05/06 17:09:08 by danimart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static char	*lst_free(char **files)
+char	*lst_free(char **lst)
 {
-	if (*files)
+	if (*lst)
 	{
-		free(*files);
-		*files = NULL;
+		free(*lst);
+		*lst = NULL;
 	}
 	return (NULL);
 }
