@@ -6,7 +6,7 @@
 /*   By: danimart <danimart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 10:20:33 by danimart          #+#    #+#             */
-/*   Updated: 2022/05/06 13:55:03 by danimart         ###   ########.fr       */
+/*   Updated: 2022/05/06 15:26:05 by danimart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,23 @@ void	draw_pixel(t_img *img, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
+int	user_end(t_mlx *mlx)
+{
+	printf("\n\e[0;36mClose window call by user with exit code \e[1;34m0\e[0m\n\n");  // debug, remove for final version.
+	mlx_destroy_window(mlx->mlx, mlx->win);
+	exit(0);
+}
+
 int	handle_key(int keycode, t_mlx *mlx)
 {
 	if (keycode == 53)
-		close_win(mlx, 0);
+		user_end(mlx);
 	return (0);
 }
 
-int	close_win(t_mlx *mlx, int code)
+int	close_win(int code)
 {
 	printf("\n\e[0;36mClose window call with exit code \e[1;34m%d\e[0m\n\n", code); // debug, remove for final version.
-	if (code == 0)
-		mlx_destroy_window(mlx->mlx, mlx->win);
 	if (code == 1)
 		printf(INPUT_ERR"\e[0m\n");
 	else if (code == 2)
@@ -53,17 +58,17 @@ int	main(int argc, char **args)
 	int		map_error;
 
 	if (argc != 2)
-		close_win(&mlx, 1);
+		close_win(1);
 	map_error = parse_map_input(args);
 	if (map_error != 0)
-		close_win(&mlx, map_error);
+		close_win(map_error);
 	mlx.mlx = mlx_init();
 	mlx.win = mlx_new_window(mlx.mlx, 120, 120, "so_long");
 	img.img = mlx_new_image(mlx.mlx, 120, 120);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
 			&img.endian);
 	mlx_key_hook(mlx.win, handle_key, &mlx);
-	mlx_hook(mlx.win, 17, 0L, close_win, &mlx);
+	mlx_hook(mlx.win, 17, 0L, user_end, &mlx);
 	mlx_put_image_to_window(mlx.mlx, mlx.win, img.img, 0, 0);
 	mlx_loop(mlx.mlx);
 }
