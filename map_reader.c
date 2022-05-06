@@ -6,11 +6,12 @@
 /*   By: danimart <danimart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 14:00:19 by danimart          #+#    #+#             */
-/*   Updated: 2022/05/05 15:15:15 by danimart         ###   ########.fr       */
+/*   Updated: 2022/05/06 09:49:17 by danimart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
 
 int	parse_map_input(char **args)
 {
@@ -21,6 +22,6 @@ int	parse_map_input(char **args)
 		size++;
 	if (size <= 4 || args[1][size - 1] != 'r' || args[1][size - 2] != 'e'
 		|| args[1][size - 3] != 'b' || args[1][size - 4] != '.')
-		return (1);
+		return (2);
 	return (0);
 }

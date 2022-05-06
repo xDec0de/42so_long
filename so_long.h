@@ -6,7 +6,7 @@
 /*   By: danimart <danimart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 12:23:44 by danimart          #+#    #+#             */
-/*   Updated: 2022/05/05 14:59:04 by danimart         ###   ########.fr       */
+/*   Updated: 2022/05/06 10:04:33 by danimart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,11 @@
 # include <mlx.h>
 # include <stdlib.h>
 # include <stdio.h>
+
+# define RED "\e[0;31m"
+# define YEL "\e[0;33m"
+# define GRY "\e[1;30m"
+# define RES "\e[0m\n"
 
 typedef struct s_data {
 	void	*img;

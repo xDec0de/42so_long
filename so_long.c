@@ -6,7 +6,7 @@
 /*   By: danimart <danimart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 10:20:33 by danimart          #+#    #+#             */
-/*   Updated: 2022/05/05 14:49:52 by danimart         ###   ########.fr       */
+/*   Updated: 2022/05/06 10:36:28 by danimart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,13 @@ int	close_win(t_mlx *mlx, int code)
 	if (code == 0)
 		mlx_destroy_window(mlx->mlx, mlx->win);
 	if (code == 1)
-		printf("Error\nInvalid input.\n");
+		printf("Error\n"RED"Invalid input, usage"GRY": "YEL
+			"./so_long map_name.ber"RES);
+	else if (code == 2)
+		printf("Error\n"RED"Invalid map format, maps must match"GRY
+			": "YEL"map_name.ber"RES);
+	else if (code == 3)
+		printf("Error\n"RED"Invalid map content."RES);
 	exit(code);
 	return (0);
 }
@@ -41,9 +47,13 @@ int	main(int argc, char **args)
 {
 	t_mlx	mlx;
 	t_img	img;
+	int		map_error;
 
-	if (argc != 2 || parse_map_input(args))
+	if (argc != 2)
 		close_win(&mlx, 1);
+	map_error = parse_map_input(args);
+	if (map_error != 0)
+		close_win(&mlx, map_error);
 	mlx.mlx = mlx_init();
 	mlx.win = mlx_new_window(mlx.mlx, 120, 120, "so_long");
 	img.img = mlx_new_image(mlx.mlx, 120, 120);
