@@ -6,7 +6,7 @@
 /*   By: danimart <danimart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 12:23:44 by danimart          #+#    #+#             */
-/*   Updated: 2022/05/06 11:46:00 by danimart         ###   ########.fr       */
+/*   Updated: 2022/05/06 12:00:00 by danimart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,6 @@
 # include <fcntl.h>
 # include <unistd.h>
 
-# define INPUT_ERR "Error\n\e[0;31mInvalid input, usage\
-\e[1;30m: \e[0;33m./so_long map_name.ber\e[0m\n"
-# define MAP_FORMAT_ERR "Error\n\e[0;31mInvalid map format, maps must match\
-\e[1;30m: \e[0;33m./map_name.ber\e[0m\n"
-# define MAP_OPEN_ERR "Error\n\e[0;31mMap file could not be opened.\e[0m\n"
-# define MAP_CONTENT_ERR "Error\n\e[0;31mInvalid map content.\e[0m\n"
 # define BUFFER_SIZE 10
 # define FD_SIZE 1024
 
