@@ -6,7 +6,7 @@
 /*   By: danimart <danimart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 10:20:33 by danimart          #+#    #+#             */
-/*   Updated: 2022/05/06 12:03:36 by danimart         ###   ########.fr       */
+/*   Updated: 2022/05/06 13:55:03 by danimart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int	handle_key(int keycode, t_mlx *mlx)
 
 int	close_win(t_mlx *mlx, int code)
 {
+	printf("\n\e[0;36mClose window call with exit code \e[1;34m%d\e[0m\n\n", code); // debug, remove for final version.
 	if (code == 0)
 		mlx_destroy_window(mlx->mlx, mlx->win);
 	if (code == 1)
@@ -38,7 +39,9 @@ int	close_win(t_mlx *mlx, int code)
 	else if (code == 3)
 		printf(MAP_OPEN_ERR"\e[0m\n");
 	else if (code == 4)
-		printf(MAP_CONTENT_ERR"\e[0m\n");
+		printf(MAP_EMPTY_ERR"\e[0m\n");
+	else if (code == 5)
+		printf(MAP_EMPTY_ERR"\e[0m\n");
 	exit(code);
 	return (0);
 }
