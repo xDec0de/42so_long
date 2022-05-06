@@ -6,7 +6,7 @@
 /*   By: danimart <danimart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 14:00:19 by danimart          #+#    #+#             */
-/*   Updated: 2022/05/06 17:14:30 by danimart         ###   ########.fr       */
+/*   Updated: 2022/05/06 17:57:04 by danimart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	read_map_file(char *map_name)
 {
 	int		fd;
 	int		map_length;
-	char	*map[FD_SIZE];
+	char	*map[MAX_MAP_SIZE];
 	char	*current_map_line;
 	int		i;
 

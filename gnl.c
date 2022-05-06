@@ -6,7 +6,7 @@
 /*   By: danimart <danimart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 10:49:41 by danimart          #+#    #+#             */
-/*   Updated: 2022/05/06 17:09:08 by danimart         ###   ########.fr       */
+/*   Updated: 2022/05/06 17:53:16 by danimart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static char	*get_line(char **files, int fd)
 char	*get_next_line(int fd)
 {
 	char		buf[BUFFER_SIZE + 1];
-	static char	*files[FD_SIZE];
+	static char	*files[MAX_MAP_SIZE];
 	int			read_res;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)

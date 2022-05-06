@@ -6,7 +6,7 @@
 /*   By: danimart <danimart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 12:23:44 by danimart          #+#    #+#             */
-/*   Updated: 2022/05/06 17:14:56 by danimart         ###   ########.fr       */
+/*   Updated: 2022/05/06 17:55:41 by danimart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 # include <unistd.h>
 
 # define BUFFER_SIZE 1024
-# define FD_SIZE 1024
 
 typedef struct s_data {
 	void	*img;

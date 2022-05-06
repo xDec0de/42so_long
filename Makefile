@@ -6,7 +6,7 @@
 #    By: danimart <danimart@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/05 10:19:42 by danimart          #+#    #+#              #
-#    Updated: 2022/05/06 15:45:28 by danimart         ###   ########.fr        #
+#    Updated: 2022/05/06 17:56:27 by danimart         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,9 +27,12 @@ MAP_EMPTY_ERR?=Error\n\e[0;31mInvalid map content\e[1;30m:\
 
 MAP_CONTENT_ERR?=Error\n\e[0;31mInvalid map content\e[1;30m.\e[0m
 
+MAX_MAP_SIZE?=1024
+
 CFLAGS= -DINPUT_ERR='"$(INPUT_ERR)"' -DMAP_FORMAT_ERR='"$(MAP_FORMAT_ERR)"'\
 -DMAP_OPEN_ERR='"$(MAP_OPEN_ERR)"' -DMAP_EMPTY_ERR='"$(MAP_EMPTY_ERR)"'\
--DMAP_CONTENT_ERR='"$(MAP_CONTENT_ERR)"' -Wall -Werror -Wextra
+-DMAP_CONTENT_ERR='"$(MAP_CONTENT_ERR)"' -DMAX_MAP_SIZE=$(MAX_MAP_SIZE)\
+-Wall -Werror -Wextra
 
 SANITIZE=-g3 -fsanitize=address
 C_FILES=so_long.c map_reader.c gnl.c strutils.c\
