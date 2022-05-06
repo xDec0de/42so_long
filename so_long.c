@@ -6,7 +6,7 @@
 /*   By: danimart <danimart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 10:20:33 by danimart          #+#    #+#             */
-/*   Updated: 2022/05/06 10:36:28 by danimart         ###   ########.fr       */
+/*   Updated: 2022/05/06 11:06:30 by danimart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,13 @@ int	close_win(t_mlx *mlx, int code)
 	if (code == 0)
 		mlx_destroy_window(mlx->mlx, mlx->win);
 	if (code == 1)
-		printf("Error\n"RED"Invalid input, usage"GRY": "YEL
-			"./so_long map_name.ber"RES);
+		printf(INPUT_ERR);
 	else if (code == 2)
-		printf("Error\n"RED"Invalid map format, maps must match"GRY
-			": "YEL"map_name.ber"RES);
+		printf(MAP_FORMAT_ERR);
 	else if (code == 3)
-		printf("Error\n"RED"Invalid map content."RES);
+		printf(MAP_OPEN_ERR);
+	else if (code == 4)
+		printf(MAP_CONTENT_ERR);
 	exit(code);
 	return (0);
 }
