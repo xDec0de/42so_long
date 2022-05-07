@@ -6,19 +6,19 @@
 /*   By: danimart <danimart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 14:00:19 by danimart          #+#    #+#             */
-/*   Updated: 2022/05/07 12:12:02 by danimart         ###   ########.fr       */
+/*   Updated: 2022/05/07 14:52:37 by danimart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	map_free(char **map, int map_size, int return_value)
+int	map_free(char **map, int map_height, int return_value)
 {
 	int	i;
 
 	i = 0;
-	printf("\n\e[1;31mAttempting map free \e[1;30m(\e[0;36msize \e[1;34m%d\e[1;30m):\n", map_size);
-	while (i < map_size)
+	printf("\n\e[1;31mMap free debug \e[1;30m(\e[0;36mheight \e[1;34m%d\e[1;30m):\n", map_height);
+	while (i < map_height)
 	{
 		printf("\e[0;32m%d\e[1;30m: \e[0;37m%s", i, map[i]);
 		free(map[i]);
@@ -29,11 +29,25 @@ int	map_free(char **map, int map_size, int return_value)
 	return (return_value);
 }
 
-int	parse_map_content(char **map, int map_size)
+int	validate_map_content(char **map, int map_height)
 {
-	print_map(map, map_size);
-	map_free(map, map_size, 0);
-	return (0);
+	int	i;
+	int	map_length;
+
+	i = 0;
+	map_length = 0;
+	while (i < map_height)
+	{
+		if (i == 0)
+			map_length = ft_strlen(map[i], 1);
+		else if (ft_strlen(map[i], 1) != map_length)
+			return (map_free(map, map_height, 4));
+		i++;
+	}
+	if (map_height == 0 || map_length == 0)
+		return (map_free(map, 0, 4));
+	print_map(map, map_height, map_length);
+	return (map_free(map, map_height, 0));
 }
 
 int	read_map_file(char *map_name)
@@ -61,7 +75,7 @@ int	read_map_file(char *map_name)
 		free(current_map_line);
 		return (map_free(map, i, 6));
 	}
-	return (parse_map_content(map, i));
+	return (validate_map_content(map, i));
 }
 
 int	parse_map_input(char **args)
