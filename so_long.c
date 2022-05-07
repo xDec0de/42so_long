@@ -6,7 +6,7 @@
 /*   By: danimart <danimart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 10:20:33 by danimart          #+#    #+#             */
-/*   Updated: 2022/05/06 15:47:20 by danimart         ###   ########.fr       */
+/*   Updated: 2022/05/07 12:06:25 by danimart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ int	close_win(int code)
 		printf(MAP_EMPTY_ERR"\e[0m\n");
 	else if (code == 5)
 		printf(MAP_EMPTY_ERR"\e[0m\n");
+	else if (code == 6)
+		printf(MAP_SIZE_ERR"\e[0m\n");
 	exit(code);
 	return (0);
 }
