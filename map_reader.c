@@ -6,7 +6,7 @@
 /*   By: danimart <danimart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 14:00:19 by danimart          #+#    #+#             */
-/*   Updated: 2022/05/07 15:34:55 by danimart         ###   ########.fr       */
+/*   Updated: 2022/05/07 15:59:57 by danimart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,25 @@ int	map_free(char **map, int map_height, int return_value)
 
 int	validate_map_structure(char **map, int map_height, int map_length)
 {
+	int	i;
+	int	j;
+
+	if (map_height < 4 || map_length < 4)
+		return (map_free(map, map_height, 8));
+	i = 0;
+	while (i < map_height)
+	{
+		j = 0;
+		while (j < map_length && (i == 0 || i == map_height - 1))
+		{
+			if (map[i][j] != '1')
+				return (map_free(map, map_height, 9));
+			j++;
+		}
+		if (map[i][0] != '1' || map[i][map_length - 1] != '1')
+			return (map_free(map, map_height, 9));
+		i++;
+	}
 	print_map(map, map_height, map_length);
 	return (map_free(map, map_height, 0));
 }
