@@ -6,7 +6,7 @@
 /*   By: danimart <danimart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 14:00:19 by danimart          #+#    #+#             */
-/*   Updated: 2022/05/07 14:52:37 by danimart         ###   ########.fr       */
+/*   Updated: 2022/05/07 15:34:55 by danimart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,31 +29,45 @@ int	map_free(char **map, int map_height, int return_value)
 	return (return_value);
 }
 
+int	validate_map_structure(char **map, int map_height, int map_length)
+{
+	print_map(map, map_height, map_length);
+	return (map_free(map, map_height, 0));
+}
+
 int	validate_map_content(char **map, int map_height)
 {
 	int	i;
+	int	j;
 	int	map_length;
 
 	i = 0;
 	map_length = 0;
 	while (i < map_height)
 	{
+		j = 0;
 		if (i == 0)
 			map_length = ft_strlen(map[i], 1);
 		else if (ft_strlen(map[i], 1) != map_length)
-			return (map_free(map, map_height, 4));
+			return (map_free(map, map_height, 7));
+		while (map[i][j] != '\0' && map[i][j] != '\n')
+		{
+			if (map[i][j] != '0' && map[i][j] != '1'
+				&& map[i][j] != 'C' && map[i][j] != 'E' && map[i][j] != 'P')
+				return (map_free(map, map_height, 4));
+			j++;
+		}
 		i++;
 	}
 	if (map_height == 0 || map_length == 0)
-		return (map_free(map, 0, 4));
-	print_map(map, map_height, map_length);
-	return (map_free(map, map_height, 0));
+		return (map_free(map, map_height, 5));
+	return (validate_map_structure(map, map_height, map_length));
 }
 
 int	read_map_file(char *map_name)
 {
 	int		fd;
-	char	*map[MAX_MAP_SIZE];
+	char	*map[MAX_MAP_HEIGHT];
 	char	*current_map_line;
 	int		i;
 
@@ -61,7 +75,7 @@ int	read_map_file(char *map_name)
 	if (fd < 0)
 		return (3);
 	i = 0;
-	while (i < MAX_MAP_SIZE)
+	while (i < MAX_MAP_HEIGHT)
 	{
 		current_map_line = get_next_line(fd);
 		if (current_map_line == NULL)

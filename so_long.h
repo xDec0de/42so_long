@@ -6,7 +6,7 @@
 /*   By: danimart <danimart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 12:23:44 by danimart          #+#    #+#             */
-/*   Updated: 2022/05/07 13:31:06 by danimart         ###   ########.fr       */
+/*   Updated: 2022/05/07 15:12:53 by danimart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,9 @@ int		close_win(int code);
 
 // map_reader.c
 int		parse_map_input(char **args);
+
+// map_handler.c
+int		draw_map(char **map, int map_height, int map_length);
 
 // gnl.c
 char	*get_next_line(int fd);

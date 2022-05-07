@@ -6,7 +6,7 @@
 /*   By: danimart <danimart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 10:49:41 by danimart          #+#    #+#             */
-/*   Updated: 2022/05/06 17:53:16 by danimart         ###   ########.fr       */
+/*   Updated: 2022/05/07 15:26:08 by danimart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,14 @@ static char	*get_line(char **files, int fd)
 	i = ft_strchr(tmp, '\n');
 	if (i == -1)
 	{
-		if (ft_strlen(tmp) <= 0)
+		if (ft_strlen(tmp, 0) <= 0)
 			return (lst_free(files + fd));
 		res = ft_strdup(tmp);
 		lst_free(&files[fd]);
 		return (res);
 	}
 	res = ft_substr(tmp, 0, i + 1);
-	files[fd] = ft_substr(tmp, i + 1, (ft_strlen(tmp) - i));
+	files[fd] = ft_substr(tmp, i + 1, (ft_strlen(tmp, 0) - i));
 	lst_free(&tmp);
 	return (res);
 }
@@ -49,7 +49,7 @@ static char	*get_line(char **files, int fd)
 char	*get_next_line(int fd)
 {
 	char		buf[BUFFER_SIZE + 1];
-	static char	*files[MAX_MAP_SIZE];
+	static char	*files[MAX_MAP_HEIGHT];
 	int			read_res;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)

@@ -6,7 +6,7 @@
 #    By: danimart <danimart@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/05 10:19:42 by danimart          #+#    #+#              #
-#    Updated: 2022/05/07 12:52:55 by danimart         ###   ########.fr        #
+#    Updated: 2022/05/07 15:23:35 by danimart         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,18 +25,24 @@ wrong name maybe?\e[0m
 MAP_EMPTY_ERR?=Error\n\e[0;31mInvalid map content\e[1;30m:\
 \e[0;31mMap is empty\e[1;30m.\e[0m
 
-MAP_CONTENT_ERR?=Error\n\e[0;31mInvalid map content\e[1;30m.\e[0m
+MAP_CONTENT_ERR?=Error\n\e[0;31mInvalid map content\e[1;30m:\
+\e[0;31mMap contains illegal characters\e[1;30m.\e[0m
 
-MAP_SIZE_ERR?=Error\n\e[0;31mMap is too big, change max size with\
-\e[0;33mmake MAX_MAP_SIZE=\e[1;30m[\e[0;33msize\e[1;30m]\
+MAP_LEN_ERR?=Error\n\e[0;31mInvalid map content\e[1;30m:\
+\e[0;31mMap is not a rectangle\e[1;30m.\e[0m
+
+MAP_HEIGHT_ERR?=Error\n\e[0;31mInvalid map content\e[1;30m:\
+\e[0;31mMap is too tall, change max height with\
+\e[0;33mmake MAX_MAP_HEIGHT=\e[1;30m[\e[0;33msize\e[1;30m]\
 <\e[0;33mre\e[1;30m>.\e[0m
 
-MAX_MAP_SIZE?=1024
+MAX_MAP_HEIGHT?=1024
 
 CFLAGS= -DINPUT_ERR='"$(INPUT_ERR)"' -DMAP_FORMAT_ERR='"$(MAP_FORMAT_ERR)"'\
 -DMAP_OPEN_ERR='"$(MAP_OPEN_ERR)"' -DMAP_EMPTY_ERR='"$(MAP_EMPTY_ERR)"'\
--DMAP_CONTENT_ERR='"$(MAP_CONTENT_ERR)"' -DMAX_MAP_SIZE=$(MAX_MAP_SIZE)\
--DMAP_SIZE_ERR='"$(MAP_SIZE_ERR)"' -Wall -Werror -Wextra
+-DMAP_CONTENT_ERR='"$(MAP_CONTENT_ERR)"' -DMAX_MAP_HEIGHT=$(MAX_MAP_HEIGHT)\
+-DMAP_HEIGHT_ERR='"$(MAP_HEIGHT_ERR)"' -DMAP_LEN_ERR='"$(MAP_LEN_ERR)"'\
+-Wall -Werror -Wextra
 
 SANITIZE=-g3 -fsanitize=address
 C_FILES=so_long.c map_reader.c gnl.c strutils.c\
