@@ -6,7 +6,7 @@
 /*   By: danimart <danimart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 12:23:44 by danimart          #+#    #+#             */
-/*   Updated: 2022/05/07 15:12:53 by danimart         ###   ########.fr       */
+/*   Updated: 2022/05/07 17:20:53 by danimart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,19 @@
 # include <unistd.h>
 
 # define BUFFER_SIZE 1024
+
+typedef struct s_player {
+	int	x;
+	int	y;
+}				t_player;
+
+typedef struct s_map {
+	char		**arr;
+	int			height;
+	int			length;
+	int			collectables;
+	t_player	player;
+}				t_map;
 
 typedef struct s_data {
 	void	*img;
@@ -40,10 +53,13 @@ int		handle_key(int keycode, t_mlx *mlx);
 int		close_win(int code);
 
 // map_reader.c
+int		map_free(char **map, int map_height, int return_value);
 int		parse_map_input(char **args);
 
 // map_handler.c
-int		draw_map(char **map, int map_height, int map_length);
+int		validate_map_objects(t_map map);
+t_map	create_map(char **map, int map_height, int map_length);
+t_map	create_base_map(char **map, int map_height);
 
 // gnl.c
 char	*get_next_line(int fd);
