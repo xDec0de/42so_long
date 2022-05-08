@@ -6,7 +6,7 @@
 /*   By: danimart <danimart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 12:23:44 by danimart          #+#    #+#             */
-/*   Updated: 2022/05/08 16:23:09 by danimart         ###   ########.fr       */
+/*   Updated: 2022/05/08 16:30:50 by danimart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ typedef struct s_vars {
 // so_long.c
 void	draw_pixel(t_img *img, int x, int y, int color);
 int		handle_key(int keycode, t_mlx *mlx);
+int		user_end(t_mlx *mlx);
 int		close_win(int code);
 
 // map_reader.c

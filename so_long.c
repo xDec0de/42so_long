@@ -6,7 +6,7 @@
 /*   By: danimart <danimart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 10:20:33 by danimart          #+#    #+#             */
-/*   Updated: 2022/05/08 16:20:38 by danimart         ###   ########.fr       */
+/*   Updated: 2022/05/08 16:32:27 by danimart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,6 @@ int	close_win(int code)
 
 int	main(int argc, char **args)
 {
-	t_mlx	mlx;
-	t_img	img;
 	int		map_error;
 
 	atexit(leaks);
@@ -75,13 +73,4 @@ int	main(int argc, char **args)
 	map_error = parse_map_input(args);
 	if (map_error != 0)
 		close_win(map_error);
-	mlx.mlx = mlx_init();
-	mlx.win = mlx_new_window(mlx.mlx, 120, 120, "so_long");
-	img.img = mlx_new_image(mlx.mlx, 120, 120);
-	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
-			&img.endian);
-	mlx_key_hook(mlx.win, handle_key, &mlx);
-	mlx_hook(mlx.win, 17, 0L, user_end, &mlx);
-	mlx_put_image_to_window(mlx.mlx, mlx.win, img.img, 0, 0);
-	mlx_loop(mlx.mlx);
 }
