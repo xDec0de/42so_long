@@ -6,7 +6,7 @@
 /*   By: danimart <danimart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 10:20:33 by danimart          #+#    #+#             */
-/*   Updated: 2022/05/07 16:11:02 by danimart         ###   ########.fr       */
+/*   Updated: 2022/05/08 11:44:02 by danimart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,10 @@ int	close_win(int code)
 		printf(MAP_SIZE_ERR"\e[0m\n");
 	else if (code == 9)
 		printf(MAP_STRCT_ERR"\e[0m\n");
+	else if (code == 10)
+		printf(MAP_OBJ_ERR"\e[0m\n");
 	exit(code);
-	return (0);
+	return (code);
 }
 
 int	main(int argc, char **args)

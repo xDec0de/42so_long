@@ -6,7 +6,7 @@
 /*   By: danimart <danimart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 14:00:19 by danimart          #+#    #+#             */
-/*   Updated: 2022/05/07 15:59:57 by danimart         ###   ########.fr       */
+/*   Updated: 2022/05/07 17:25:06 by danimart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,58 +29,57 @@ int	map_free(char **map, int map_height, int return_value)
 	return (return_value);
 }
 
-int	validate_map_structure(char **map, int map_height, int map_length)
+int	validate_map_structure(t_map map)
 {
 	int	i;
 	int	j;
 
-	if (map_height < 4 || map_length < 4)
-		return (map_free(map, map_height, 8));
+	if (map.height < 4 || map.length < 4)
+		return (map_free(map.arr, map.height, 8));
 	i = 0;
-	while (i < map_height)
+	while (i < map.height)
 	{
 		j = 0;
-		while (j < map_length && (i == 0 || i == map_height - 1))
+		while (j < map.length && (i == 0 || i == map.height - 1))
 		{
-			if (map[i][j] != '1')
-				return (map_free(map, map_height, 9));
+			if (map.arr[i][j] != '1')
+				return (map_free(map.arr, map.height, 9));
 			j++;
 		}
-		if (map[i][0] != '1' || map[i][map_length - 1] != '1')
-			return (map_free(map, map_height, 9));
+		if (map.arr[i][0] != '1' || map.arr[i][map.length - 1] != '1')
+			return (map_free(map.arr, map.height, 9));
 		i++;
 	}
-	print_map(map, map_height, map_length);
-	return (map_free(map, map_height, 0));
+	return (validate_map_objects(map));
 }
 
-int	validate_map_content(char **map, int map_height)
+int	validate_map_content(t_map map)
 {
 	int	i;
 	int	j;
-	int	map_length;
 
 	i = 0;
-	map_length = 0;
-	while (i < map_height)
+	map.length = 0;
+	while (i < map.height)
 	{
 		j = 0;
 		if (i == 0)
-			map_length = ft_strlen(map[i], 1);
-		else if (ft_strlen(map[i], 1) != map_length)
-			return (map_free(map, map_height, 7));
-		while (map[i][j] != '\0' && map[i][j] != '\n')
+			map.length = ft_strlen(map.arr[i], 1);
+		else if (ft_strlen(map.arr[i], 1) != map.length)
+			return (map_free(map.arr, map.height, 7));
+		while (map.arr[i][j] != '\0' && map.arr[i][j] != '\n')
 		{
-			if (map[i][j] != '0' && map[i][j] != '1'
-				&& map[i][j] != 'C' && map[i][j] != 'E' && map[i][j] != 'P')
-				return (map_free(map, map_height, 4));
+			if (map.arr[i][j] != '0' && map.arr[i][j] != '1'
+				&& map.arr[i][j] != 'C' && map.arr[i][j] != 'E'
+				&& map.arr[i][j] != 'P')
+				return (map_free(map.arr, map.height, 4));
 			j++;
 		}
 		i++;
 	}
-	if (map_height == 0 || map_length == 0)
-		return (map_free(map, map_height, 5));
-	return (validate_map_structure(map, map_height, map_length));
+	if (map.height == 0 || map.length == 0)
+		return (map_free(map.arr, map.height, 5));
+	return (validate_map_structure(map));
 }
 
 int	read_map_file(char *map_name)
@@ -108,7 +107,7 @@ int	read_map_file(char *map_name)
 		free(current_map_line);
 		return (map_free(map, i, 6));
 	}
-	return (validate_map_content(map, i));
+	return (validate_map_content(create_base_map(map, i)));
 }
 
 int	parse_map_input(char **args)
