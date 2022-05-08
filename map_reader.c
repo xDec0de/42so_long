@@ -6,7 +6,7 @@
 /*   By: danimart <danimart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 14:00:19 by danimart          #+#    #+#             */
-/*   Updated: 2022/05/07 17:25:06 by danimart         ###   ########.fr       */
+/*   Updated: 2022/05/08 16:23:31 by danimart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	validate_map_structure(t_map map)
 			return (map_free(map.arr, map.height, 9));
 		i++;
 	}
-	return (validate_map_objects(map));
+	return (validate_map_objects(map, 0));
 }
 
 int	validate_map_content(t_map map)

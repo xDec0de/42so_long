@@ -6,7 +6,7 @@
 /*   By: danimart <danimart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 10:20:33 by danimart          #+#    #+#             */
-/*   Updated: 2022/05/08 11:44:02 by danimart         ###   ########.fr       */
+/*   Updated: 2022/05/08 16:20:38 by danimart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ int	close_win(int code)
 		printf(MAP_STRCT_ERR"\e[0m\n");
 	else if (code == 10)
 		printf(MAP_OBJ_ERR"\e[0m\n");
+	else if (code == 11)
+		printf(MAP_PLYR_ERR"\e[0m\n");
 	exit(code);
 	return (code);
 }

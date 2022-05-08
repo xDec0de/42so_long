@@ -6,7 +6,7 @@
 /*   By: danimart <danimart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 13:13:58 by danimart          #+#    #+#             */
-/*   Updated: 2022/05/08 13:53:21 by danimart         ###   ########.fr       */
+/*   Updated: 2022/05/08 16:18:59 by danimart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,35 +27,37 @@ t_map	create_base_map(char **map, int map_height)
 	return (res);
 }
 
-t_map	set_player(t_map map, int x, int y)
+int	create_player(t_map map, int x, int y)
 {
 	map.player.x = x;
 	map.player.y = y;
-	return (map);
+	return (1);
 }
 
-int	validate_map_objects(t_map map)
+int	validate_map_objects(t_map map, int player_amount)
 {
-	int		i;
-	int		j;
-	int		exits;
+	int		y;
+	int		x;
 
-	i = 0;
-	exits = 0;
-	while (i < map.height)
+	y = 0;
+	while (y < map.height)
 	{
-		j = 0;
-		while (map.arr[i][j] != '\0')
+		x = 0;
+		while (x < map.length)
 		{
-			if (map.arr[i][j] == 'E')
-				exits++;
-			else if (map.arr[i][j] == 'C')
+			if (map.arr[y][x] == 'E')
+				map.exits++;
+			else if (map.arr[y][x] == 'C')
 				map.collectables++;
-			j++;
+			else if (map.arr[y][x] == 'P')
+				player_amount += create_player(map, x, y);
+			x++;
 		}
-		i++;
+		y++;
 	}
-	if (exits == 0 || map.collectables == 0)
+	if (map.exits == 0 || map.collectables == 0)
 		return (map_free(map.arr, map.height, 10));
+	else if (player_amount != 1)
+		return (map_free(map.arr, map.height, 11));
 	return (map_free(map.arr, map.height, 0));
 }
