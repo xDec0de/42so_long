@@ -6,19 +6,11 @@
 /*   By: danimart <danimart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 10:20:33 by danimart          #+#    #+#             */
-/*   Updated: 2022/05/09 13:30:45 by danimart         ###   ########.fr       */
+/*   Updated: 2022/05/09 15:55:28 by danimart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-void	draw_pixel(t_img *img, int x, int y, int color)
-{
-	char	*dst;
-
-	dst = img->addr + (y * img->line_length + x * (img->bits_per_pixel / 8));
-	*(unsigned int *)dst = color;
-}
 
 int	user_end(t_map *map)
 {

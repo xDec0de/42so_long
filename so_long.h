@@ -6,7 +6,7 @@
 /*   By: danimart <danimart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 12:23:44 by danimart          #+#    #+#             */
-/*   Updated: 2022/05/09 15:50:35 by danimart         ###   ########.fr       */
+/*   Updated: 2022/05/09 15:55:32 by danimart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,6 @@
 
 typedef struct s_data {
 	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
 }				t_img;
 
 typedef struct s_player {

@@ -6,7 +6,7 @@
 /*   By: danimart <danimart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 13:13:58 by danimart          #+#    #+#             */
-/*   Updated: 2022/05/09 15:51:53 by danimart         ###   ########.fr       */
+/*   Updated: 2022/05/09 15:55:25 by danimart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,10 @@ t_map	cache_images(t_map map, int d)
 	mlx_key_hook(map.win, handle_key, &map);
 	mlx_hook(map.win, 17, 0L, user_end, &map);
 	map.wall.img = mlx_xpm_file_to_image(map.mlx, "./img/wall.xpm", &d, &d);
-	map.wall.addr = mlx_get_data_addr(map.wall.img, &z, &z, &z);
 	map.key.img = mlx_xpm_file_to_image(map.mlx, "./img/key.xpm", &d, &d);
-	map.key.addr = mlx_get_data_addr(map.key.img, &z, &z, &z);
 	map.ext.img = mlx_xpm_file_to_image(map.mlx, "./img/door.xpm", &d, &d);
-	map.ext.addr = mlx_get_data_addr(map.ext.img, &z, &z, &z);
 	map.bg.img = mlx_xpm_file_to_image(map.mlx, "./img/bg.xpm", &d, &d);
-	map.bg.addr = mlx_get_data_addr(map.bg.img, &z, &z, &z);
 	map.pl.txt.img = mlx_xpm_file_to_image(map.mlx, "./img/player.xpm", &d, &d);
-	map.pl.txt.addr = mlx_get_data_addr(map.pl.txt.img, &z, &z, &z);
 	return (map);
 }
 
