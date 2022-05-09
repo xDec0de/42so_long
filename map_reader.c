@@ -6,7 +6,7 @@
 /*   By: danimart <danimart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 14:00:19 by danimart          #+#    #+#             */
-/*   Updated: 2022/05/08 16:23:31 by danimart         ###   ########.fr       */
+/*   Updated: 2022/05/09 16:07:35 by danimart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,6 @@ int	validate_map_structure(t_map map)
 	int	i;
 	int	j;
 
-	if (map.height < 4 || map.length < 4)
-		return (map_free(map.arr, map.height, 8));
 	i = 0;
 	while (i < map.height)
 	{
