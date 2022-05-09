@@ -6,7 +6,7 @@
 /*   By: danimart <danimart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 13:13:58 by danimart          #+#    #+#             */
-/*   Updated: 2022/05/09 14:17:02 by danimart         ###   ########.fr       */
+/*   Updated: 2022/05/09 15:18:14 by danimart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,28 +32,33 @@ t_map	cache_images(t_map map, int d)
 	return (map);
 }
 
+void	draw_texture(t_map map, int x, int y, int d)
+{
+	if (map.arr[y][x] == '1')
+		mlx_put_image_to_window(map.mlx, map.win, map.wall.img, x * d, y * d);
+	else if (map.arr[y][x] == 'C')
+		mlx_put_image_to_window(map.mlx, map.win, map.key.img, x * d, y * d);
+	else if (map.arr[y][x] == '0')
+		mlx_put_image_to_window(map.mlx, map.win, map.bg.img, x * d, y * d);
+	else if (map.arr[y][x] == 'E')
+		mlx_put_image_to_window(map.mlx, map.win, map.ext.img, x * d, y * d);
+}
+
 int	draw_map(t_map map)
 {
 	int		x;
 	int		y;
-	int		d;
 
-	d = 16;
 	x = 0;
 	y = 0;
-	map = cache_images(map, d);
+	map = cache_images(map, 16);
 	print_map(map.arr, map.height, map.length);
-	while(y < map.height) {
+	while (y < map.height)
+	{
 		x = 0;
-		while(x < map.length) {
-			if (map.arr[y][x] == '1')
-				mlx_put_image_to_window(map.mlx, map.win, map.wall.img, x * 16, y * 16);
-			else if (map.arr[y][x] == 'C')
-				mlx_put_image_to_window(map.mlx, map.win, map.key.img, x * 16, y * 16);
-			else if (map.arr[y][x] == '0')
-				mlx_put_image_to_window(map.mlx, map.win, map.bg.img, x * 16, y * 16);
-			else if (map.arr[y][x] == 'E')
-				mlx_put_image_to_window(map.mlx, map.win, map.ext.img, x * 16, y * 16);
+		while (x < map.length)
+		{
+			draw_texture(map, x, y, 16);
 			x++;
 		}
 		y++;
@@ -77,13 +82,6 @@ t_map	create_base_map(char **map, int map_height)
 	return (res);
 }
 
-int	create_player(t_map map, int x, int y)
-{
-	map.player.x = x;
-	map.player.y = y;
-	return (1);
-}
-
 int	validate_map_objects(t_map map, int player_amount)
 {
 	int		y;
@@ -100,7 +98,7 @@ int	validate_map_objects(t_map map, int player_amount)
 			else if (map.arr[y][x] == 'C')
 				map.collectables++;
 			else if (map.arr[y][x] == 'P')
-				player_amount += create_player(map, x, y);
+				player_amount++;
 			x++;
 		}
 		y++;
