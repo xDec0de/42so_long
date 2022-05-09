@@ -6,7 +6,7 @@
 /*   By: danimart <danimart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 13:13:58 by danimart          #+#    #+#             */
-/*   Updated: 2022/05/09 15:29:08 by danimart         ###   ########.fr       */
+/*   Updated: 2022/05/09 15:51:53 by danimart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ t_map	cache_images(t_map map, int d)
 	map.ext.addr = mlx_get_data_addr(map.ext.img, &z, &z, &z);
 	map.bg.img = mlx_xpm_file_to_image(map.mlx, "./img/bg.xpm", &d, &d);
 	map.bg.addr = mlx_get_data_addr(map.bg.img, &z, &z, &z);
+	map.pl.txt.img = mlx_xpm_file_to_image(map.mlx, "./img/player.xpm", &d, &d);
+	map.pl.txt.addr = mlx_get_data_addr(map.pl.txt.img, &z, &z, &z);
 	return (map);
 }
 
@@ -42,6 +44,12 @@ void	draw_texture(t_map map, int x, int y, int d)
 		mlx_put_image_to_window(map.mlx, map.win, map.bg.img, x * d, y * d);
 	else if (map.arr[y][x] == 'E')
 		mlx_put_image_to_window(map.mlx, map.win, map.ext.img, x * d, y * d);
+	else if (map.arr[y][x] == 'P')
+	{
+		map.pl.x = x;
+		map.pl.y = y;
+		mlx_put_image_to_window(map.mlx, map.win, map.pl.txt.img, x * d, y * d);
+	}
 }
 
 int	draw_map(t_map map)
@@ -78,7 +86,7 @@ t_map	create_base_map(char **map, int map_height)
 	res.collectables = 0;
 	p.x = -1;
 	p.y = -1;
-	res.player = p;
+	res.pl = p;
 	return (res);
 }
 
