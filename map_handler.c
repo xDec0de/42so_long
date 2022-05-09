@@ -6,7 +6,7 @@
 /*   By: danimart <danimart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 13:13:58 by danimart          #+#    #+#             */
-/*   Updated: 2022/05/09 15:57:47 by danimart         ###   ########.fr       */
+/*   Updated: 2022/05/09 16:04:44 by danimart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,15 +73,9 @@ int	draw_map(t_map map)
 t_map	create_base_map(char **map, int map_height)
 {
 	t_map		res;
-	t_player	p;
 
 	res.arr = map;
 	res.height = map_height;
-	res.length = 0;
-	res.collectables = 0;
-	p.x = -1;
-	p.y = -1;
-	res.pl = p;
 	return (res);
 }
 
