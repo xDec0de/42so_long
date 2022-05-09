@@ -6,7 +6,7 @@
 /*   By: danimart <danimart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 12:23:44 by danimart          #+#    #+#             */
-/*   Updated: 2022/05/09 13:31:14 by danimart         ###   ########.fr       */
+/*   Updated: 2022/05/09 14:13:53 by danimart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,14 @@ typedef struct s_player {
 	int	y;
 }				t_player;
 
+typedef struct s_data {
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}				t_img;
+
 typedef struct s_map {
 	char		**arr;
 	int			height;
@@ -35,15 +43,11 @@ typedef struct s_map {
 	void		*mlx;
 	void		*win;
 	t_player	player;
+	t_img		wall;
+	t_img		key;
+	t_img		bg;
+	t_img		ext;
 }				t_map;
-
-typedef struct s_data {
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-}				t_img;
 
 // so_long.c
 void	draw_pixel(t_img *img, int x, int y, int color);
