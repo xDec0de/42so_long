@@ -6,7 +6,7 @@
 /*   By: danimart <danimart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 13:13:58 by danimart          #+#    #+#             */
-/*   Updated: 2022/05/09 15:55:25 by danimart         ###   ########.fr       */
+/*   Updated: 2022/05/09 15:57:47 by danimart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,29 +21,29 @@ t_map	cache_images(t_map map, int d)
 	map.win = mlx_new_window(map.mlx, map.length * d, map.height * d, NAME);
 	mlx_key_hook(map.win, handle_key, &map);
 	mlx_hook(map.win, 17, 0L, user_end, &map);
-	map.wall.img = mlx_xpm_file_to_image(map.mlx, "./img/wall.xpm", &d, &d);
-	map.key.img = mlx_xpm_file_to_image(map.mlx, "./img/key.xpm", &d, &d);
-	map.ext.img = mlx_xpm_file_to_image(map.mlx, "./img/door.xpm", &d, &d);
-	map.bg.img = mlx_xpm_file_to_image(map.mlx, "./img/bg.xpm", &d, &d);
-	map.pl.txt.img = mlx_xpm_file_to_image(map.mlx, "./img/player.xpm", &d, &d);
+	map.wall = mlx_xpm_file_to_image(map.mlx, "./img/wall.xpm", &d, &d);
+	map.key = mlx_xpm_file_to_image(map.mlx, "./img/key.xpm", &d, &d);
+	map.ext = mlx_xpm_file_to_image(map.mlx, "./img/door.xpm", &d, &d);
+	map.bg = mlx_xpm_file_to_image(map.mlx, "./img/bg.xpm", &d, &d);
+	map.pl.txt = mlx_xpm_file_to_image(map.mlx, "./img/player.xpm", &d, &d);
 	return (map);
 }
 
 void	draw_texture(t_map map, int x, int y, int d)
 {
 	if (map.arr[y][x] == '1')
-		mlx_put_image_to_window(map.mlx, map.win, map.wall.img, x * d, y * d);
+		mlx_put_image_to_window(map.mlx, map.win, map.wall, x * d, y * d);
 	else if (map.arr[y][x] == 'C')
-		mlx_put_image_to_window(map.mlx, map.win, map.key.img, x * d, y * d);
+		mlx_put_image_to_window(map.mlx, map.win, map.key, x * d, y * d);
 	else if (map.arr[y][x] == '0')
-		mlx_put_image_to_window(map.mlx, map.win, map.bg.img, x * d, y * d);
+		mlx_put_image_to_window(map.mlx, map.win, map.bg, x * d, y * d);
 	else if (map.arr[y][x] == 'E')
-		mlx_put_image_to_window(map.mlx, map.win, map.ext.img, x * d, y * d);
+		mlx_put_image_to_window(map.mlx, map.win, map.ext, x * d, y * d);
 	else if (map.arr[y][x] == 'P')
 	{
 		map.pl.x = x;
 		map.pl.y = y;
-		mlx_put_image_to_window(map.mlx, map.win, map.pl.txt.img, x * d, y * d);
+		mlx_put_image_to_window(map.mlx, map.win, map.pl.txt, x * d, y * d);
 	}
 }
 

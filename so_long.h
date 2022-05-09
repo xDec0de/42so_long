@@ -6,7 +6,7 @@
 /*   By: danimart <danimart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 12:23:44 by danimart          #+#    #+#             */
-/*   Updated: 2022/05/09 15:55:32 by danimart         ###   ########.fr       */
+/*   Updated: 2022/05/09 15:58:36 by danimart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,10 @@
 
 # define BUFFER_SIZE 1024
 
-typedef struct s_data {
-	void	*img;
-}				t_img;
-
 typedef struct s_player {
 	int		x;
 	int		y;
-	t_img	txt;
+	void	*txt;
 }				t_player;
 
 typedef struct s_map {
@@ -39,15 +35,14 @@ typedef struct s_map {
 	int			exits;
 	void		*mlx;
 	void		*win;
+	void		*wall;
+	void		*key;
+	void		*bg;
+	void		*ext;
 	t_player	pl;
-	t_img		wall;
-	t_img		key;
-	t_img		bg;
-	t_img		ext;
 }				t_map;
 
 // so_long.c
-void	draw_pixel(t_img *img, int x, int y, int color);
 int		handle_key(int keycode, t_map *map);
 int		user_end(t_map *map);
 int		close_win(int code);
