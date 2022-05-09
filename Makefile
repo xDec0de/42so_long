@@ -6,7 +6,7 @@
 #    By: danimart <danimart@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/05 10:19:42 by danimart          #+#    #+#              #
-#    Updated: 2022/05/09 15:29:00 by danimart         ###   ########.fr        #
+#    Updated: 2022/05/09 16:29:24 by danimart         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,10 +36,6 @@ MAP_HEIGHT_ERR?=Error\n\e[0;31mInvalid map content\e[1;30m:\
 \e[0;33mmake MAX_MAP_HEIGHT=\e[1;30m[\e[0;33msize\e[1;30m]\
 <\e[0;33mre\e[1;30m>.\e[0m
 
-MAP_SIZE_ERR?=Error\n\e[0;31mInvalid map content\e[1;30m:\
-\e[0;31mMap is too small, maps must be at least \e[0;33m4x4\
-\e[0;31mto fit every needed object\e[1;30m.\e[0m
-
 MAP_STRCT_ERR?=Error\n\e[0;31mInvalid map content\e[1;30m:\
 \e[0;31mMap must be closed with walls\e[1;30m.\e[0m
 
@@ -56,9 +52,8 @@ CFLAGS= -DINPUT_ERR='"$(INPUT_ERR)"' -DMAP_FORMAT_ERR='"$(MAP_FORMAT_ERR)"'\
 -DMAP_OPEN_ERR='"$(MAP_OPEN_ERR)"' -DMAP_EMPTY_ERR='"$(MAP_EMPTY_ERR)"'\
 -DMAP_CONTENT_ERR='"$(MAP_CONTENT_ERR)"' -DMAX_MAP_HEIGHT=$(MAX_MAP_HEIGHT)\
 -DMAP_HEIGHT_ERR='"$(MAP_HEIGHT_ERR)"' -DMAP_LEN_ERR='"$(MAP_LEN_ERR)"'\
--DMAP_SIZE_ERR='"$(MAP_SIZE_ERR)"' -DMAP_STRCT_ERR='"$(MAP_STRCT_ERR)"'\
--DMAP_OBJ_ERR='"$(MAP_OBJ_ERR)"' -DMAP_PLYR_ERR='"$(MAP_PLYR_ERR)"'\
--DNAME='"$(NAME)"' -Wall -Werror -Wextra
+-DMAP_STRCT_ERR='"$(MAP_STRCT_ERR)"' -DMAP_OBJ_ERR='"$(MAP_OBJ_ERR)"'\
+-DMAP_PLYR_ERR='"$(MAP_PLYR_ERR)"' -DNAME='"$(NAME)"' -Wall -Werror -Wextra
 
 SANITIZE=-g3 -fsanitize=address
 C_FILES=so_long.c map_reader.c gnl.c strutils.c map_handler.c\
