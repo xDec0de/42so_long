@@ -6,7 +6,7 @@
 #    By: danimart <danimart@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/05 10:19:42 by danimart          #+#    #+#              #
-#    Updated: 2022/05/09 16:29:24 by danimart         ###   ########.fr        #
+#    Updated: 2022/05/09 16:34:01 by danimart         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,6 +46,8 @@ must have at least one exit and one collectable\e[1;30m).\e[0m
 MAP_PLYR_ERR?=Error\n\e[0;31mInvalid map content\e[1;30m:\
 \e[0;31mMap must have one player\e[1;30m.\e[0m
 
+MLX_ERR?=Error\n\e[0;31mMlx error\e[1;30m.\e[0m
+
 MAX_MAP_HEIGHT?=1024
 
 CFLAGS= -DINPUT_ERR='"$(INPUT_ERR)"' -DMAP_FORMAT_ERR='"$(MAP_FORMAT_ERR)"'\
@@ -53,7 +55,8 @@ CFLAGS= -DINPUT_ERR='"$(INPUT_ERR)"' -DMAP_FORMAT_ERR='"$(MAP_FORMAT_ERR)"'\
 -DMAP_CONTENT_ERR='"$(MAP_CONTENT_ERR)"' -DMAX_MAP_HEIGHT=$(MAX_MAP_HEIGHT)\
 -DMAP_HEIGHT_ERR='"$(MAP_HEIGHT_ERR)"' -DMAP_LEN_ERR='"$(MAP_LEN_ERR)"'\
 -DMAP_STRCT_ERR='"$(MAP_STRCT_ERR)"' -DMAP_OBJ_ERR='"$(MAP_OBJ_ERR)"'\
--DMAP_PLYR_ERR='"$(MAP_PLYR_ERR)"' -DNAME='"$(NAME)"' -Wall -Werror -Wextra
+-DMAP_PLYR_ERR='"$(MAP_PLYR_ERR)"' -DNAME='"$(NAME)"'\
+-DMLX_ERR='"$(MLX_ERR)"' -Wall -Werror -Wextra
 
 SANITIZE=-g3 -fsanitize=address
 C_FILES=so_long.c map_reader.c gnl.c strutils.c map_handler.c\

@@ -6,7 +6,7 @@
 /*   By: danimart <danimart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 13:13:58 by danimart          #+#    #+#             */
-/*   Updated: 2022/05/09 16:04:44 by danimart         ###   ########.fr       */
+/*   Updated: 2022/05/09 16:41:07 by danimart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,19 @@ t_map	cache_images(t_map map, int d)
 
 	z = 0;
 	map.mlx = mlx_init();
-	map.win = mlx_new_window(map.mlx, map.length * d, map.height * d, NAME);
-	mlx_key_hook(map.win, handle_key, &map);
-	mlx_hook(map.win, 17, 0L, user_end, &map);
-	map.wall = mlx_xpm_file_to_image(map.mlx, "./img/wall.xpm", &d, &d);
-	map.key = mlx_xpm_file_to_image(map.mlx, "./img/key.xpm", &d, &d);
-	map.ext = mlx_xpm_file_to_image(map.mlx, "./img/door.xpm", &d, &d);
-	map.bg = mlx_xpm_file_to_image(map.mlx, "./img/bg.xpm", &d, &d);
-	map.pl.txt = mlx_xpm_file_to_image(map.mlx, "./img/player.xpm", &d, &d);
+	if (map.mlx != NULL)
+		map.win = mlx_new_window(map.mlx, map.length * d, map.height * d, NAME);
+	if (map.win != NULL)
+	{
+		map.win = mlx_new_window(map.mlx, map.length * d, map.height * d, NAME);
+		mlx_key_hook(map.win, handle_key, &map);
+		mlx_hook(map.win, 17, 0L, user_end, &map);
+		map.wall = mlx_xpm_file_to_image(map.mlx, "./img/wall.xpm", &d, &d);
+		map.key = mlx_xpm_file_to_image(map.mlx, "./img/key.xpm", &d, &d);
+		map.ext = mlx_xpm_file_to_image(map.mlx, "./img/door.xpm", &d, &d);
+		map.bg = mlx_xpm_file_to_image(map.mlx, "./img/bg.xpm", &d, &d);
+		map.pl.txt = mlx_xpm_file_to_image(map.mlx, "./img/player.xpm", &d, &d);
+	}
 	return (map);
 }
 
@@ -55,7 +60,8 @@ int	draw_map(t_map map)
 	x = 0;
 	y = 0;
 	map = cache_images(map, 16);
-	print_map(map.arr, map.height, map.length);
+	if (map.mlx == NULL || map.win == NULL)
+		return (map_free(map.arr, map.height, 8));
 	while (y < map.height)
 	{
 		x = 0;
