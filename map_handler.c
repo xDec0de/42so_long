@@ -6,7 +6,7 @@
 /*   By: danimart <danimart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 13:13:58 by danimart          #+#    #+#             */
-/*   Updated: 2022/05/08 20:32:21 by danimart         ###   ########.fr       */
+/*   Updated: 2022/05/09 13:34:22 by danimart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,34 +14,33 @@
 
 int	draw_map(t_map map)
 {
-	t_mlx	mlx;
 	t_img	img;
 	int		x;
 	int		y;
 	int		d;
 
 	d = 16;
-	mlx.mlx = mlx_init();
-	mlx.win = mlx_new_window(mlx.mlx, map.length * 16, map.height * 16, "so_long");
-	img.img = mlx_xpm_file_to_image(mlx.mlx, "./img/wall.xpm", &d, &d);
+	map.mlx = mlx_init();
+	map.win = mlx_new_window(map.mlx, map.length * d, map.height * d, "so_long");
+	img.img = mlx_xpm_file_to_image(map.mlx, "./img/wall.xpm", &d, &d);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
-	mlx_key_hook(mlx.win, handle_key, &mlx);
-	mlx_hook(mlx.win, 17, 0L, user_end, &mlx);
+	mlx_key_hook(map.win, handle_key, &map);
+	mlx_hook(map.win, 17, 0L, user_end, &map);
 	x = 0;
 	y = 0;
 	while(x < map.length) {
 		y = 0;
 		while(y < map.length) {
 			if (x % 2 == 0)
-				img.img = mlx_xpm_file_to_image(mlx.mlx, "./img/wall.xpm", &d, &d);
+				img.img = mlx_xpm_file_to_image(map.mlx, "./img/wall.xpm", &d, &d);
 			else
-				img.img = mlx_xpm_file_to_image(mlx.mlx, "./img/key.xpm", &d, &d);
-			mlx_put_image_to_window(mlx.mlx, mlx.win, img.img, x * 16, y * 16);
+				img.img = mlx_xpm_file_to_image(map.mlx, "./img/key.xpm", &d, &d);
+			mlx_put_image_to_window(map.mlx, map.win, img.img, x * 16, y * 16);
 			y++;
 		}
 		x++;
 	}
-	mlx_loop(mlx.mlx);
+	mlx_loop(map.mlx);
 	return (map_free(map.arr, map.height, 0));
 }
 

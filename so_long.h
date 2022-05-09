@@ -6,7 +6,7 @@
 /*   By: danimart <danimart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 12:23:44 by danimart          #+#    #+#             */
-/*   Updated: 2022/05/08 16:30:50 by danimart         ###   ########.fr       */
+/*   Updated: 2022/05/09 13:31:14 by danimart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ typedef struct s_map {
 	int			length;
 	int			collectables;
 	int			exits;
+	void		*mlx;
+	void		*win;
 	t_player	player;
 }				t_map;
 
@@ -43,15 +45,10 @@ typedef struct s_data {
 	int		endian;
 }				t_img;
 
-typedef struct s_vars {
-	void	*mlx;
-	void	*win;
-}				t_mlx;
-
 // so_long.c
 void	draw_pixel(t_img *img, int x, int y, int color);
-int		handle_key(int keycode, t_mlx *mlx);
-int		user_end(t_mlx *mlx);
+int		handle_key(int keycode, t_map *map);
+int		user_end(t_map *map);
 int		close_win(int code);
 
 // map_reader.c

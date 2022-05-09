@@ -6,7 +6,7 @@
 /*   By: danimart <danimart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 10:20:33 by danimart          #+#    #+#             */
-/*   Updated: 2022/05/08 16:32:27 by danimart         ###   ########.fr       */
+/*   Updated: 2022/05/09 13:30:45 by danimart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,17 @@ void	draw_pixel(t_img *img, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-int	user_end(t_mlx *mlx)
+int	user_end(t_map *map)
 {
 	printf("\n\e[0;36mClose window call by user with exit code \e[1;34m0\e[0m\n\n");  // debug, remove for final version.
-	mlx_destroy_window(mlx->mlx, mlx->win);
+	mlx_destroy_window(map->mlx, map->win);
 	exit(0);
 }
 
-int	handle_key(int keycode, t_mlx *mlx)
+int	handle_key(int keycode, t_map *map)
 {
 	if (keycode == 53)
-		user_end(mlx);
+		user_end(map);
 	return (0);
 }
 
