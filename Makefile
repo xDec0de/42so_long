@@ -6,7 +6,7 @@
 #    By: danimart <danimart@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/05 10:19:42 by danimart          #+#    #+#              #
-#    Updated: 2022/05/08 16:25:33 by danimart         ###   ########.fr        #
+#    Updated: 2022/05/09 15:29:00 by danimart         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,7 +58,7 @@ CFLAGS= -DINPUT_ERR='"$(INPUT_ERR)"' -DMAP_FORMAT_ERR='"$(MAP_FORMAT_ERR)"'\
 -DMAP_HEIGHT_ERR='"$(MAP_HEIGHT_ERR)"' -DMAP_LEN_ERR='"$(MAP_LEN_ERR)"'\
 -DMAP_SIZE_ERR='"$(MAP_SIZE_ERR)"' -DMAP_STRCT_ERR='"$(MAP_STRCT_ERR)"'\
 -DMAP_OBJ_ERR='"$(MAP_OBJ_ERR)"' -DMAP_PLYR_ERR='"$(MAP_PLYR_ERR)"'\
--Wall -Werror -Wextra
+-DNAME='"$(NAME)"' -Wall -Werror -Wextra
 
 SANITIZE=-g3 -fsanitize=address
 C_FILES=so_long.c map_reader.c gnl.c strutils.c map_handler.c\

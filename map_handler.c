@@ -6,7 +6,7 @@
 /*   By: danimart <danimart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 13:13:58 by danimart          #+#    #+#             */
-/*   Updated: 2022/05/09 15:18:14 by danimart         ###   ########.fr       */
+/*   Updated: 2022/05/09 15:29:08 by danimart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_map	cache_images(t_map map, int d)
 
 	z = 0;
 	map.mlx = mlx_init();
-	map.win = mlx_new_window(map.mlx, map.length * d, map.height * d, "so_long");
+	map.win = mlx_new_window(map.mlx, map.length * d, map.height * d, NAME);
 	mlx_key_hook(map.win, handle_key, &map);
 	mlx_hook(map.win, 17, 0L, user_end, &map);
 	map.wall.img = mlx_xpm_file_to_image(map.mlx, "./img/wall.xpm", &d, &d);
