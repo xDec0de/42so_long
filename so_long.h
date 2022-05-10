@@ -6,7 +6,7 @@
 /*   By: danimart <danimart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 12:23:44 by danimart          #+#    #+#             */
-/*   Updated: 2022/05/10 12:02:36 by danimart         ###   ########.fr       */
+/*   Updated: 2022/05/10 12:19:33 by danimart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ t_map	create_base_map(char **map, int map_height);
 // player_handler.c
 void	move_player_up(t_map *map);
 void	move_player_down(t_map *map);
+void	move_player_right(t_map *map);
+void	move_player_left(t_map *map);
 
 // gnl.c
 char	*get_next_line(int fd);

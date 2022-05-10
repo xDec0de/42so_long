@@ -6,7 +6,7 @@
 /*   By: danimart <danimart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 10:20:33 by danimart          #+#    #+#             */
-/*   Updated: 2022/05/10 12:02:14 by danimart         ###   ########.fr       */
+/*   Updated: 2022/05/10 12:19:21 by danimart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,10 @@ int	handle_key(int keycode, t_map *map)
 		move_player_up(map);
 	if (keycode == 1 || keycode == 125)
 		move_player_down(map);
+	if (keycode == 2 || keycode == 124)
+		move_player_right(map);
+	if (keycode == 0 || keycode == 123)
+		move_player_left(map);
 	return (0);
 }
 

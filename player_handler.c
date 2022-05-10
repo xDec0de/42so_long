@@ -6,7 +6,7 @@
 /*   By: danimart <danimart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 16:01:13 by danimart          #+#    #+#             */
-/*   Updated: 2022/05/10 12:09:07 by danimart         ###   ########.fr       */
+/*   Updated: 2022/05/10 12:20:56 by danimart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,12 +61,40 @@ void	move_player_down(t_map *map)
 	map->pl.y++;
 }
 
-/*void	move_player_left(t_map *map)
+void	move_player_right(t_map *map)
 {
-	
-}*/
+	if (map->arr[map->pl.y][map->pl.x + 1] == '1')
+		return ;
+	else if (map->arr[map->pl.y][map->pl.x + 1] == 'E')
+	{
+		if (map->collectables == 0)
+			user_end(map);
+		return ;
+	}
+	else if (map->arr[map->pl.y][map->pl.x + 1] == 'C')
+		map->collectables--;
+	map->arr[map->pl.y][map->pl.x + 1] = 'P';
+	map->arr[map->pl.y][map->pl.x] = '0';
+	redraw_texture(*map, 'P', map->pl.y, map->pl.x + 1);
+	redraw_texture(*map, '0', map->pl.y, map->pl.x);
+	map->pl.x++;
+}
 
-/*void	move_player_right(t_map *map)
+void	move_player_left(t_map *map)
 {
-	
-}*/
+	if (map->arr[map->pl.y][map->pl.x - 1] == '1')
+		return ;
+	else if (map->arr[map->pl.y][map->pl.x - 1] == 'E')
+	{
+		if (map->collectables == 0)
+			user_end(map);
+		return ;
+	}
+	else if (map->arr[map->pl.y][map->pl.x - 1] == 'C')
+		map->collectables--;
+	map->arr[map->pl.y][map->pl.x - 1] = 'P';
+	map->arr[map->pl.y][map->pl.x] = '0';
+	redraw_texture(*map, 'P', map->pl.y, map->pl.x - 1);
+	redraw_texture(*map, '0', map->pl.y, map->pl.x);
+	map->pl.x--;
+}
