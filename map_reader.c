@@ -6,7 +6,7 @@
 /*   By: danimart <danimart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 14:00:19 by danimart          #+#    #+#             */
-/*   Updated: 2022/05/10 13:10:01 by danimart         ###   ########.fr       */
+/*   Updated: 2022/05/10 13:11:44 by danimart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,11 @@ int	map_free(char **map, int map_height, int return_value)
 	int	i;
 
 	i = 0;
-	printf("\n\e[1;31mMap free debug \e[1;30m(\e[0;36mheight \e[1;34m%d\e[1;30m):\n", map_height);
 	while (i < map_height)
 	{
-		printf("\e[0;32m%d\e[1;30m: \e[0;37m%s", i, map[i]);
 		free(map[i]);
 		i++;
 	}
-	printf("\e[0m\n");
 	*map = NULL;
 	return (return_value);
 }

@@ -6,7 +6,7 @@
 /*   By: danimart <danimart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 12:23:44 by danimart          #+#    #+#             */
-/*   Updated: 2022/05/10 12:19:33 by danimart         ###   ########.fr       */
+/*   Updated: 2022/05/10 13:12:33 by danimart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,5 @@ char	*ft_strdup(char *s);
 int		ft_strchr(char *s, char ch);
 char	*ft_strjoin(char *s1, char *s2);
 char	*ft_substr(char *s, int start, int len);
-
- // Debug, remove for final version.
- void leaks(void); 
- void print_map(char **map, int map_height, int map_length); 
 
 #endif
