@@ -6,7 +6,7 @@
 /*   By: danimart <danimart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 14:00:19 by danimart          #+#    #+#             */
-/*   Updated: 2022/05/10 11:40:09 by danimart         ###   ########.fr       */
+/*   Updated: 2022/05/10 13:10:01 by danimart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,14 +56,12 @@ int	validate_map_content(t_map map)
 	int	i;
 	int	j;
 
-	i = 0;
-	map.length = 0;
+	map.length = ft_strlen(map.arr[0], 1);
+	i = 1;
 	while (i < map.height)
 	{
 		j = 0;
-		if (i == 0)
-			map.length = ft_strlen(map.arr[i], 1);
-		else if (ft_strlen(map.arr[i], 1) != map.length)
+		if (ft_strlen(map.arr[i], 1) != map.length)
 			return (map_free(map.arr, map.height, 7));
 		while (map.arr[i][j] != '\0' && map.arr[i][j] != '\n')
 		{
@@ -77,13 +75,15 @@ int	validate_map_content(t_map map)
 	}
 	if (map.height == 0 || map.length == 0)
 		return (map_free(map.arr, map.height, 5));
+	else if (map.length > 1024)
+		return (map_free(map.arr, map.height, 6));
 	return (validate_map_structure(map));
 }
 
 int	read_map_file(char *map_name)
 {
 	int		fd;
-	char	*map[MAX_MAP_HEIGHT];
+	char	*map[1024];
 	char	*current_map_line;
 	int		i;
 
@@ -91,7 +91,7 @@ int	read_map_file(char *map_name)
 	if (fd < 0)
 		return (3);
 	i = 0;
-	while (i < MAX_MAP_HEIGHT)
+	while (i < 1024)
 	{
 		current_map_line = get_next_line(fd);
 		if (current_map_line == NULL)
