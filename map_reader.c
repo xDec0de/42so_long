@@ -6,7 +6,7 @@
 /*   By: danimart <danimart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 14:00:19 by danimart          #+#    #+#             */
-/*   Updated: 2022/05/10 13:11:44 by danimart         ###   ########.fr       */
+/*   Updated: 2022/05/10 13:59:30 by danimart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ int	parse_map_input(char **args)
 	size = 0;
 	while (args[1][size] != '\0')
 		size++;
-	if (size <= 4 || args[1][size - 1] != 'r' || args[1][size - 2] != 'e'
+	if (size <= 3 || args[1][size - 1] != 'r' || args[1][size - 2] != 'e'
 		|| args[1][size - 3] != 'b' || args[1][size - 4] != '.')
 		return (2);
 	return (read_map_file(args[1]));

@@ -6,7 +6,7 @@
 /*   By: danimart <danimart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 10:20:33 by danimart          #+#    #+#             */
-/*   Updated: 2022/05/10 13:12:06 by danimart         ###   ########.fr       */
+/*   Updated: 2022/05/10 14:04:22 by danimart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 int	user_end(t_map *map)
 {
-	mlx_destroy_window(map->mlx, map->win);
+	if (map != NULL && map->mlx != NULL && map->win != NULL)
+		mlx_destroy_window(map->mlx, map->win);
 	exit(0);
 }
 
 int	handle_key(int keycode, t_map *map)
 {
-	printf("\n\e[0;36mKey pressed with code \e[1;34m%d\e[0m\n\n", keycode);
 	if (keycode == 53)
 		user_end(map);
 	if (keycode == 13 || keycode == 126)
@@ -66,7 +66,6 @@ int	main(int argc, char **args)
 {
 	int		map_error;
 
-	atexit(leaks);
 	if (argc != 2)
 		close_win(1);
 	map_error = parse_map_input(args);
