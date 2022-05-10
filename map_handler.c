@@ -6,7 +6,7 @@
 /*   By: danimart <danimart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 13:13:58 by danimart          #+#    #+#             */
-/*   Updated: 2022/05/10 12:17:24 by danimart         ###   ########.fr       */
+/*   Updated: 2022/05/10 14:18:14 by danimart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ t_map	cache_images(t_map map, int d)
 		map.win = mlx_new_window(map.mlx, map.length * d, map.height * d, NAME);
 	if (map.win != NULL)
 	{
-		map.win = mlx_new_window(map.mlx, map.length * d, map.height * d, NAME);
 		map.wall = mlx_xpm_file_to_image(map.mlx, "./img/wall.xpm", &d, &d);
 		map.key = mlx_xpm_file_to_image(map.mlx, "./img/key.xpm", &d, &d);
 		map.ext = mlx_xpm_file_to_image(map.mlx, "./img/door.xpm", &d, &d);
@@ -84,6 +83,7 @@ t_map	create_base_map(char **map, int map_height)
 	res.height = map_height;
 	res.exits = 0;
 	res.collectables = 0;
+	res.movements = 0;
 	return (res);
 }
 

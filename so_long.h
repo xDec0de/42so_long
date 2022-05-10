@@ -6,7 +6,7 @@
 /*   By: danimart <danimart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 12:23:44 by danimart          #+#    #+#             */
-/*   Updated: 2022/05/10 14:03:17 by danimart         ###   ########.fr       */
+/*   Updated: 2022/05/10 14:15:09 by danimart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct s_map {
 	int			length;
 	int			collectables;
 	int			exits;
+	int			movements;
 	void		*mlx;
 	void		*win;
 	void		*wall;
@@ -56,10 +57,10 @@ int		validate_map_objects(t_map *map, int player_amount);
 t_map	create_base_map(char **map, int map_height);
 
 // player_handler.c
-void	move_player_up(t_map *map);
-void	move_player_down(t_map *map);
-void	move_player_right(t_map *map);
-void	move_player_left(t_map *map);
+int		move_player_up(t_map *map);
+int		move_player_down(t_map *map);
+int		move_player_right(t_map *map);
+int		move_player_left(t_map *map);
 
 // gnl.c
 char	*get_next_line(int fd);

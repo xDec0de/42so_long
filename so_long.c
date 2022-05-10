@@ -6,7 +6,7 @@
 /*   By: danimart <danimart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 10:20:33 by danimart          #+#    #+#             */
-/*   Updated: 2022/05/10 14:04:22 by danimart         ###   ########.fr       */
+/*   Updated: 2022/05/10 14:17:54 by danimart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,21 @@ int	user_end(t_map *map)
 
 int	handle_key(int keycode, t_map *map)
 {
+	int	res;
+
+	res = 1;
 	if (keycode == 53)
 		user_end(map);
 	if (keycode == 13 || keycode == 126)
-		move_player_up(map);
+		res = move_player_up(map);
 	if (keycode == 1 || keycode == 125)
-		move_player_down(map);
+		res = move_player_down(map);
 	if (keycode == 2 || keycode == 124)
-		move_player_right(map);
+		res = move_player_right(map);
 	if (keycode == 0 || keycode == 123)
-		move_player_left(map);
+		res = move_player_left(map);
+	if (res == 0)
+		printf("Movements: %d\n", ++map->movements);
 	return (0);
 }
 
