@@ -6,7 +6,7 @@
 /*   By: danimart <danimart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 10:20:33 by danimart          #+#    #+#             */
-/*   Updated: 2022/05/09 16:38:32 by danimart         ###   ########.fr       */
+/*   Updated: 2022/05/10 12:02:14 by danimart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,13 @@ int	user_end(t_map *map)
 
 int	handle_key(int keycode, t_map *map)
 {
+	printf("\n\e[0;36mKey pressed with code \e[1;34m%d\e[0m\n\n", keycode);
 	if (keycode == 53)
 		user_end(map);
+	if (keycode == 13 || keycode == 126)
+		move_player_up(map);
+	if (keycode == 1 || keycode == 125)
+		move_player_down(map);
 	return (0);
 }
 
