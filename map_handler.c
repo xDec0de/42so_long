@@ -6,7 +6,7 @@
 /*   By: danimart <danimart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 13:13:58 by danimart          #+#    #+#             */
-/*   Updated: 2022/05/10 11:47:15 by danimart         ###   ########.fr       */
+/*   Updated: 2022/05/10 12:17:24 by danimart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,8 @@ t_map	create_base_map(char **map, int map_height)
 
 	res.arr = map;
 	res.height = map_height;
+	res.exits = 0;
+	res.collectables = 0;
 	return (res);
 }
 
