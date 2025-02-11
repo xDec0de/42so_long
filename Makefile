@@ -28,7 +28,7 @@ O_FILES = $(C_FILES:.c=.o)
 all: $(NAME)
 
 $(NAME): $(O_FILES)
-	$(CC) $(C_FLAGS) $(O_FILES) $(LMLX) -o $(NAME)
+	$(CC) $(C_FLAGS) $(O_FILES) $(MLXFLAG) -o $(NAME)
 
 clean:
 	rm -rf $(O_FILES)
