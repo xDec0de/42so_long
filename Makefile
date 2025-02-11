@@ -3,38 +3,37 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: danimart <danimart@student.42.fr>          +#+  +:+       +#+         #
+#    By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/05/05 10:19:42 by danimart          #+#    #+#              #
-#    Updated: 2022/05/10 14:06:26 by danimart         ###   ########.fr        #
+#    Created: 2022/05/05 10:19:42 by daniema3          #+#    #+#              #
+#    Updated: 2025/02/11 14:48:29 by daniema3         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
+
 CC = gcc
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Wextra -Werror -I minilibx-linux
+#MLXFLAGS = -L mlx/ -lmlx -lXext -lX11
 
-# LMLX = -lmlx -framework OpenGL -framework AppKit
-MLXFLAG = -lmlx -lXext -lX11
+SRCS =	so_long.c\
+		map_reader.c\
+		gnl.c strutils.c\
+		map_handler.c\
+		player_handler.c
 
-C_FILES =	so_long.c\
-			map_reader.c\
-			gnl.c strutils.c\
-			map_handler.c\
-			player_handler.c
-
-O_FILES = $(C_FILES:.c=.o)
+OBJS = $(SRCS:%.c=%.o)
 
 all: $(NAME)
 
-$(NAME): $(O_FILES)
-	$(CC) $(C_FLAGS) $(O_FILES) $(MLXFLAG) -o $(NAME)
+$(NAME): $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
 clean:
-	rm -rf $(O_FILES)
+	rm -rf $(OBJS)
 
 fclean:
-	rm -rf $(O_FILES) $(NAME)
+	rm -rf $(OBJS) $(NAME)
 
 re: fclean $(NAME)
 
