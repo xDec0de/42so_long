@@ -10,54 +10,15 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME=so_long
-CC=gcc
+NAME = so_long
+CC = gcc
 
-INPUT_ERR?=Error\n\e[0;31mInvalid input, usage\e[1;30m:\
- \e[0;33m./so_long map_name.ber\e[1;30m.\e[0m
+CFLAGS = -Wall -Werror -Wextra
 
-MAP_FORMAT_ERR?=Error\n\e[0;31mInvalid map format, maps must have\
-the extension \e[0;33m.ber\e[1;30m.\e[0m
+SANITIZE = -g3 -fsanitize=address
+C_FILES = so_long.c map_reader.c gnl.c strutils.c map_handler.c player_handler.c
 
-MAP_OPEN_ERR?=Error\n\e[0;31mMap file could not be opened,\
-wrong name maybe?\e[0m
-
-MAP_EMPTY_ERR?=Error\n\e[0;31mInvalid map content\e[1;30m:\
-\e[0;31mMap is empty\e[1;30m.\e[0m
-
-MAP_CONTENT_ERR?=Error\n\e[0;31mInvalid map content\e[1;30m:\
-\e[0;31mMap contains illegal characters\e[1;30m.\e[0m
-
-MAP_LEN_ERR?=Error\n\e[0;31mInvalid map content\e[1;30m:\
-\e[0;31mMap is not a rectangle, some lines are so_long haha\e[1;30m.\e[0m
-
-MAP_SIZE_ERR?=Error\n\e[0;31mInvalid map content\e[1;30m:\
-\e[0;31mMap is too big, max map dimensions are \e[0;33m1024x1024\e[1;30m.\e[0m
-
-MAP_STRCT_ERR?=Error\n\e[0;31mInvalid map content\e[1;30m:\
-\e[0;31mMap must be closed with walls\e[1;30m.\e[0m
-
-MAP_OBJ_ERR?=Error\n\e[0;31mInvalid map content\e[1;30m:\
-\e[0;31mRequired objects are missing \e[1;30m(\e[0;31mMap\
-must have at least one exit and one collectable\e[1;30m).\e[0m
-
-MAP_PLYR_ERR?=Error\n\e[0;31mInvalid map content\e[1;30m:\
-\e[0;31mMap must have one player\e[1;30m.\e[0m
-
-MLX_ERR?=Error\n\e[0;31mMlx error\e[1;30m.\e[0m
-
-CFLAGS= -DINPUT_ERR='"$(INPUT_ERR)"' -DMAP_FORMAT_ERR='"$(MAP_FORMAT_ERR)"'\
--DMAP_OPEN_ERR='"$(MAP_OPEN_ERR)"' -DMAP_EMPTY_ERR='"$(MAP_EMPTY_ERR)"'\
--DMAP_CONTENT_ERR='"$(MAP_CONTENT_ERR)"' -DMAP_SIZE_ERR='"$(MAP_SIZE_ERR)"'\
--DMAP_LEN_ERR='"$(MAP_LEN_ERR)"' -DMAP_STRCT_ERR='"$(MAP_STRCT_ERR)"'\
--DMAP_OBJ_ERR='"$(MAP_OBJ_ERR)"' -DMAP_PLYR_ERR='"$(MAP_PLYR_ERR)"'\
--DNAME='"$(NAME)"' -DMLX_ERR='"$(MLX_ERR)"' -Wall -Werror -Wextra
-
-SANITIZE=-g3 -fsanitize=address
-C_FILES=so_long.c map_reader.c gnl.c strutils.c map_handler.c player_handler.c
-LMLX = -lmlx -framework OpenGL -framework AppKit
-
-O_FILES=$(C_FILES:.c=.o)
+O_FILES = $(C_FILES:.c=.o)
 
 all: $(NAME)
 headermk:
