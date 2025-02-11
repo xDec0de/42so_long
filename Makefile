@@ -17,6 +17,8 @@ CFLAGS = -Wall -Werror -Wextra
 
 SANITIZE = -g3 -fsanitize=address
 C_FILES = so_long.c map_reader.c gnl.c strutils.c map_handler.c player_handler.c
+# LMLX = -lmlx -framework OpenGL -framework AppKit
+MLXFLAG = -lmlx -lXext -lX11
 
 O_FILES = $(C_FILES:.c=.o)
 
