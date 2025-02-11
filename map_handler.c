@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 13:13:58 by daniema3          #+#    #+#             */
-/*   Updated: 2025/02/11 16:48:29 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/02/11 17:14:12 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ t_map	cache_images(t_map map, int d)
 		map.win = mlx_new_window(map.mlx, map.length * d, map.height * d, "so_long");
 	if (map.win != NULL)
 	{
-		map.wall = mlx_xpm_file_to_image(map.mlx, "./img/wall.xpm", &d, &d);
-		map.key = mlx_xpm_file_to_image(map.mlx, "./img/key.xpm", &d, &d);
-		map.ext = mlx_xpm_file_to_image(map.mlx, "./img/door.xpm", &d, &d);
-		map.bg = mlx_xpm_file_to_image(map.mlx, "./img/bg.xpm", &d, &d);
-		map.pl.txt = mlx_xpm_file_to_image(map.mlx, "./img/player.xpm", &d, &d);
+		map.wall = mlx_xpm_file_to_image(map.mlx, ASSET_WALL, &d, &d);
+		map.key = mlx_xpm_file_to_image(map.mlx, ASSET_KEY, &d, &d);
+		map.ext = mlx_xpm_file_to_image(map.mlx, ASSET_DOOR, &d, &d);
+		map.bg = mlx_xpm_file_to_image(map.mlx, ASSET_BG, &d, &d);
+		map.pl.txt = mlx_xpm_file_to_image(map.mlx, ASSET_PLAYER, &d, &d);
 	}
 	return (map);
 }

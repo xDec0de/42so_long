@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danimart <danimart@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 12:23:44 by danimart          #+#    #+#             */
-/*   Updated: 2022/05/10 14:15:09 by danimart         ###   ########.fr       */
+/*   Updated: 2025/02/11 17:13:40 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,12 @@ must have at least one exit and one collectable\e[1;30m).\e[0m"
 \e[0;31mMap must have one player\e[1;30m.\e[0m"
 
 # define MLX_ERR "Error\n\e[0;31mMlx error\e[1;30m.\e[0m"
+
+# define ASSET_WALL "./assets/wall.xpm"
+# define ASSET_KEY "./assets/key.xpm"
+# define ASSET_DOOR "./assets/door.xpm"
+# define ASSET_BG "./assets/bg.xpm"
+# define ASSET_PLAYER "./assets/player.xpm"
 
 
 typedef struct s_player {
