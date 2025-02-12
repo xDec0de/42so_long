@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 13:13:58 by daniema3          #+#    #+#             */
-/*   Updated: 2025/02/11 17:14:12 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/02/12 15:49:43 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ t_map	create_base_map(char **map, int map_height)
 	res.arr = map;
 	res.height = map_height;
 	res.exits = 0;
-	res.collectables = 0;
+	res.keys = 0;
 	res.movements = 0;
 	return (res);
 }
@@ -98,14 +98,14 @@ int	validate_map_objects(t_map *map, int player_amount)
 			if (map->arr[y][x] == 'E')
 				map->exits++;
 			else if (map->arr[y][x] == 'C')
-				map->collectables++;
+				map->keys++;
 			else if (map->arr[y][x] == 'P')
 				player_amount++;
 			x++;
 		}
 		y++;
 	}
-	if (map->exits == 0 || map->collectables == 0)
+	if (map->exits == 0 || map->keys == 0)
 		return (map_free(map->arr, map->height, 10));
 	else if (player_amount != 1)
 		return (map_free(map->arr, map->height, 11));

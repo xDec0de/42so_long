@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_handler.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danimart <danimart@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/09 16:01:13 by danimart          #+#    #+#             */
-/*   Updated: 2022/05/10 14:10:06 by danimart         ###   ########.fr       */
+/*   Created: 2022/05/09 16:01:13 by daniema3          #+#    #+#             */
+/*   Updated: 2025/02/12 15:48:38 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,12 @@ int	move_player_up(t_map *map)
 		return (1);
 	else if (map->arr[map->pl.y - 1][map->pl.x] == 'E')
 	{
-		if (map->collectables == 0)
+		if (map->keys == 0)
 			user_end(map);
 		return (1);
 	}
 	else if (map->arr[map->pl.y - 1][map->pl.x] == 'C')
-		map->collectables--;
+		map->keys--;
 	map->arr[map->pl.y - 1][map->pl.x] = 'P';
 	map->arr[map->pl.y][map->pl.x] = '0';
 	redraw_texture(*map, 'P', map->pl.y - 1, map->pl.x);
@@ -49,12 +49,12 @@ int	move_player_down(t_map *map)
 		return (1);
 	else if (map->arr[map->pl.y + 1][map->pl.x] == 'E')
 	{
-		if (map->collectables == 0)
+		if (map->keys == 0)
 			user_end(map);
 		return (1);
 	}
 	else if (map->arr[map->pl.y + 1][map->pl.x] == 'C')
-		map->collectables--;
+		map->keys--;
 	map->arr[map->pl.y + 1][map->pl.x] = 'P';
 	map->arr[map->pl.y][map->pl.x] = '0';
 	redraw_texture(*map, 'P', map->pl.y + 1, map->pl.x);
@@ -69,12 +69,12 @@ int	move_player_right(t_map *map)
 		return (1);
 	else if (map->arr[map->pl.y][map->pl.x + 1] == 'E')
 	{
-		if (map->collectables == 0)
+		if (map->keys == 0)
 			user_end(map);
 		return (1);
 	}
 	else if (map->arr[map->pl.y][map->pl.x + 1] == 'C')
-		map->collectables--;
+		map->keys--;
 	map->arr[map->pl.y][map->pl.x + 1] = 'P';
 	map->arr[map->pl.y][map->pl.x] = '0';
 	redraw_texture(*map, 'P', map->pl.y, map->pl.x + 1);
@@ -89,12 +89,12 @@ int	move_player_left(t_map *map)
 		return (1);
 	else if (map->arr[map->pl.y][map->pl.x - 1] == 'E')
 	{
-		if (map->collectables == 0)
+		if (map->keys == 0)
 			user_end(map);
 		return (1);
 	}
 	else if (map->arr[map->pl.y][map->pl.x - 1] == 'C')
-		map->collectables--;
+		map->keys--;
 	map->arr[map->pl.y][map->pl.x - 1] = 'P';
 	map->arr[map->pl.y][map->pl.x] = '0';
 	redraw_texture(*map, 'P', map->pl.y, map->pl.x - 1);

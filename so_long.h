@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/05 12:23:44 by danimart          #+#    #+#             */
-/*   Updated: 2025/02/11 17:13:40 by daniema3         ###   ########.fr       */
+/*   Created: 2022/05/05 12:23:44 by daniema3          #+#    #+#             */
+/*   Updated: 2025/02/12 15:53:55 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ typedef struct s_map {
 	char		**arr;
 	int			height;
 	int			length;
-	int			collectables;
+	int			keys;
 	int			exits;
 	int			movements;
 	void		*mlx;
