@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danimart <danimart@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/05 10:20:33 by danimart          #+#    #+#             */
-/*   Updated: 2022/05/10 14:17:54 by danimart         ###   ########.fr       */
+/*   Created: 2022/05/05 10:20:33 by daniema3          #+#    #+#             */
+/*   Updated: 2025/02/12 16:11:32 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,16 @@ int	handle_key(int keycode, t_map *map)
 	int	res;
 
 	res = 1;
-	if (keycode == 53)
+	if (keycode == KEY_ESC)
 		user_end(map);
-	if (keycode == 13 || keycode == 126)
+	else if (keycode == KEY_UP || keycode == KEY_W)
 		res = move_player_up(map);
-	if (keycode == 1 || keycode == 125)
-		res = move_player_down(map);
-	if (keycode == 2 || keycode == 124)
-		res = move_player_right(map);
-	if (keycode == 0 || keycode == 123)
+	else if (keycode == KEY_LEFT || keycode == KEY_A)
 		res = move_player_left(map);
+	else if (keycode == KEY_DOWN || keycode == KEY_S)
+		res = move_player_down(map);
+	else if (keycode == KEY_RIGHT || keycode == KEY_D)
+		res = move_player_right(map);
 	if (res == 0)
 		printf("Movements: %d\n", ++map->movements);
 	return (0);

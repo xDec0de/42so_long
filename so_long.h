@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 12:23:44 by daniema3          #+#    #+#             */
-/*   Updated: 2025/02/12 15:53:55 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/02/12 16:09:35 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,15 @@ must have at least one exit and one collectable\e[1;30m).\e[0m"
 # define ASSET_BG "./assets/bg.xpm"
 # define ASSET_PLAYER "./assets/player.xpm"
 
+# define KEY_ESC 65307
+# define KEY_UP 65362
+# define KEY_LEFT 65361
+# define KEY_DOWN 65364
+# define KEY_RIGHT 65363
+# define KEY_W 119
+# define KEY_A 97
+# define KEY_S 115
+# define KEY_D 100
 
 typedef struct s_player {
 	int		x;
