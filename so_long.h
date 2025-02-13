@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 12:23:44 by daniema3          #+#    #+#             */
-/*   Updated: 2025/02/12 16:09:35 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/02/13 15:14:44 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,35 +21,35 @@
 
 # define BUFFER_SIZE 1024
 
-# define INPUT_ERR "Error\n\e[0;31mInvalid input, usage\e[1;30m:\
+# define INPUT_ERR "Error\n\e[0;31mInvalid input, usage\e[1;30m: \
  \e[0;33m./so_long map_name.ber\e[1;30m.\e[0m"
 
-# define MAP_FORMAT_ERR "Error\n\e[0;31mInvalid map format, maps must have\
+# define MAP_FORMAT_ERR "Error\n\e[0;31mInvalid map format, maps must have \
 the extension \e[0;33m.ber\e[1;30m.\e[0m"
 
-# define MAP_OPEN_ERR "Error\n\e[0;31mMap file could not be opened,\
+# define MAP_OPEN_ERR "Error\n\e[0;31mMap file could not be opened, \
 wrong name maybe?\e[0m"
 
-# define MAP_EMPTY_ERR "Error\n\e[0;31mInvalid map content\e[1;30m:\
+# define MAP_EMPTY_ERR "Error\n\e[0;31mInvalid map content\e[1;30m: \
 \e[0;31mMap is empty\e[1;30m.\e[0m"
 
-# define MAP_CONTENT_ERR "Error\n\e[0;31mInvalid map content\e[1;30m:\
+# define MAP_CONTENT_ERR "Error\n\e[0;31mInvalid map content\e[1;30m: \
 \e[0;31mMap contains illegal characters\e[1;30m.\e[0m"
 
-# define MAP_LEN_ERR "Error\n\e[0;31mInvalid map content\e[1;30m:\
-\e[0;31mMap is not a rectangle, some lines are so_long haha\e[1;30m.\e[0m"
+# define MAP_LEN_ERR "Error\n\e[0;31mInvalid map content\e[1;30m: \
+\e[0;31mMap is not a rectangle, some lines are... So_long\e[1;30m.\e[0m"
 
-# define MAP_SIZE_ERR "Error\n\e[0;31mInvalid map content\e[1;30m:\
+# define MAP_SIZE_ERR "Error\n\e[0;31mInvalid map content\e[1;30m: \
 \e[0;31mMap is too big, max map dimensions are \e[0;33m1024x1024\e[1;30m.\e[0m"
 
-# define MAP_STRCT_ERR "Error\n\e[0;31mInvalid map content\e[1;30m:\
+# define MAP_STRCT_ERR "Error\n\e[0;31mInvalid map content\e[1;30m: \
 \e[0;31mMap must be closed with walls\e[1;30m.\e[0m"
 
-# define MAP_OBJ_ERR "Error\n\e[0;31mInvalid map content\e[1;30m:\
+# define MAP_OBJ_ERR "Error\n\e[0;31mInvalid map content\e[1;30m: \
 \e[0;31mRequired objects are missing \e[1;30m(\e[0;31mMap\
 must have at least one exit and one collectable\e[1;30m).\e[0m"
 
-# define MAP_PLYR_ERR "Error\n\e[0;31mInvalid map content\e[1;30m:\
+# define MAP_PLYR_ERR "Error\n\e[0;31mInvalid map content\e[1;30m: \
 \e[0;31mMap must have one player\e[1;30m.\e[0m"
 
 # define MLX_ERR "Error\n\e[0;31mMlx error\e[1;30m.\e[0m"
