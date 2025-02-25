@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 12:23:44 by daniema3          #+#    #+#             */
-/*   Updated: 2025/02/13 15:14:44 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/02/25 19:27:17 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,9 @@ wrong name maybe?\e[0m"
 # define MAP_LEN_ERR "Error\n\e[0;31mInvalid map content\e[1;30m: \
 \e[0;31mMap is not a rectangle, some lines are... So_long\e[1;30m.\e[0m"
 
-# define MAP_SIZE_ERR "Error\n\e[0;31mInvalid map content\e[1;30m: \
-\e[0;31mMap is too big, max map dimensions are \e[0;33m1024x1024\e[1;30m.\e[0m"
+# define MAP_SIZE_ERR "Error\n\e[0;31mInvalid map content\e[1;30m:\
+ \e[0;31mMap is too big, max map dimensions are\
+ \e[0;33m1024x1024\e[1;30m.\e[0m"
 
 # define MAP_STRCT_ERR "Error\n\e[0;31mInvalid map content\e[1;30m: \
 \e[0;31mMap must be closed with walls\e[1;30m.\e[0m"
@@ -70,13 +71,15 @@ must have at least one exit and one collectable\e[1;30m).\e[0m"
 # define KEY_S 115
 # define KEY_D 100
 
-typedef struct s_player {
+typedef struct s_player
+{
 	int		x;
 	int		y;
 	void	*txt;
 }				t_player;
 
-typedef struct s_map {
+typedef struct s_map
+{
 	char		**arr;
 	int			height;
 	int			length;

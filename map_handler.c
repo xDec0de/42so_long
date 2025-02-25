@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 13:13:58 by daniema3          #+#    #+#             */
-/*   Updated: 2025/02/12 15:49:43 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/02/25 19:27:48 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ t_map	cache_images(t_map map, int d)
 {
 	map.mlx = mlx_init();
 	if (map.mlx != NULL)
-		map.win = mlx_new_window(map.mlx, map.length * d, map.height * d, "so_long");
+		map.win = mlx_new_window(map.mlx, map.length * d, map.height * d,
+				"so_long");
 	if (map.win != NULL)
 	{
 		map.wall = mlx_xpm_file_to_image(map.mlx, ASSET_WALL, &d, &d);
