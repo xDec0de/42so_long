@@ -6,7 +6,7 @@
 #    By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/05 10:19:42 by daniema3          #+#    #+#              #
-#    Updated: 2025/02/11 17:02:21 by daniema3         ###   ########.fr        #
+#    Updated: 2025/02/25 19:20:45 by daniema3         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,4 +37,7 @@ fclean:
 
 re: fclean $(NAME)
 
-.PHONY: all clean fclean re
+norm:
+	norminette ${SRCS} so_long.h
+
+.PHONY: all clean fclean re norm
