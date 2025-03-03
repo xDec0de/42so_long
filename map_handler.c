@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 13:13:58 by daniema3          #+#    #+#             */
-/*   Updated: 2025/02/25 19:28:21 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/03/03 20:56:41 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,32 +83,4 @@ t_map	create_base_map(char **map, int map_height)
 	res.keys = 0;
 	res.movements = 0;
 	return (res);
-}
-
-int	validate_map_objects(t_map *map, int player_amount)
-{
-	int		y;
-	int		x;
-
-	y = 0;
-	while (y < map->height)
-	{
-		x = 0;
-		while (x < map->length)
-		{
-			if (map->arr[y][x] == 'E')
-				map->exits++;
-			else if (map->arr[y][x] == 'C')
-				map->keys++;
-			else if (map->arr[y][x] == 'P')
-				player_amount++;
-			x++;
-		}
-		y++;
-	}
-	if (map->exits == 0 || map->keys == 0)
-		return (map_free(map->arr, map->height, 10));
-	else if (player_amount != 1)
-		return (map_free(map->arr, map->height, 11));
-	return (draw_map(map));
 }

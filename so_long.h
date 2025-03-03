@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 12:23:44 by daniema3          #+#    #+#             */
-/*   Updated: 2025/02/25 19:28:40 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/03/03 21:01:38 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,9 +106,12 @@ int		close_win(int code);
 int		map_free(char **map, int map_height, int return_value);
 int		parse_map_input(char **args);
 
+// map_validator.c
+int		validate_map_content(t_map map);
+
 // map_handler.c
-int		validate_map_objects(t_map *map, int player_amount);
 t_map	create_base_map(char **map, int map_height);
+int		draw_map(t_map *map);
 
 // player_handler.c
 int		move_player_up(t_map *map);

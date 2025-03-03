@@ -6,7 +6,7 @@
 #    By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/05 10:19:42 by daniema3          #+#    #+#              #
-#    Updated: 2025/02/25 19:20:45 by daniema3         ###   ########.fr        #
+#    Updated: 2025/03/03 20:59:35 by daniema3         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,9 +16,10 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror -I minilibx-linux
 MLXFLAGS = -L minilibx-linux/ -lmlx -lXext -lX11
 
-SRCS =	so_long.c\
+SRCS =	gnl.c strutils.c\
+		so_long.c\
 		map_reader.c\
-		gnl.c strutils.c\
+		map_validator.c\
 		map_handler.c\
 		player_handler.c
 
