@@ -6,11 +6,38 @@
 /*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 20:55:46 by daniema3          #+#    #+#             */
-/*   Updated: 2025/03/03 20:56:47 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/03/03 21:10:12 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+int	validate_map_gameplay(t_map *map, char **maparr)
+{
+	return (draw_map(map));
+}
+
+char **clone_map_array(t_map *map)
+{
+	char	**arr;
+	int		x;
+	int		y;
+
+	x = 0;
+	y = 0;
+	arr = malloc(map->height);
+	while (y < map->height)
+	{
+		x = 0;
+		arr[y] = malloc(map->height * sizeof(char));
+		while (x < map->length)
+		{
+			arr[x][y] = map->arr[x][y];
+			x++;
+		}
+		y++;
+	}
+}
 
 int	validate_map_objects(t_map *map, int player_amount)
 {
@@ -37,7 +64,7 @@ int	validate_map_objects(t_map *map, int player_amount)
 		return (map_free(map->arr, map->height, 10));
 	else if (player_amount != 1)
 		return (map_free(map->arr, map->height, 11));
-	return (draw_map(map));
+	return (validate_map_gameplay(map, clone_map_array(map)));
 }
 
 int	validate_map_structure(t_map map)
