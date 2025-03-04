@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 10:20:33 by daniema3          #+#    #+#             */
-/*   Updated: 2025/03/04 23:38:08 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/03/04 23:58:14 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,10 @@ void	exit_sl(t_map *map, char *msg, int code)
 
 	if (map != NULL && map->mlx != NULL)
 	{
-		mlx_destroy_display(map->mlx);
 		if (map->win != NULL)
 			mlx_destroy_window(map->mlx, map->win);
 		free_assets(map);
+		mlx_destroy_display(map->mlx);
 		free(map->mlx);
 	}
 	if (msg != NULL)

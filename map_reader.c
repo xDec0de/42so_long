@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 14:00:19 by danimart          #+#    #+#             */
-/*   Updated: 2025/03/04 23:45:44 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/03/04 23:48:27 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,13 @@ void	read_map_file(char *map_name)
 		current_map_line = get_next_line(fd);
 		if (current_map_line == NULL)
 			break ;
-		map[i] = current_map_line;
-		i++;
+		map[i++] = current_map_line;
 	}
 	current_map_line = get_next_line(fd);
 	if (current_map_line != NULL)
 	{
 		free(current_map_line);
+		close(fd);
 		exit_sl(NULL, MAP_SIZE_ERR, 6);
 	}
 	close(fd);
