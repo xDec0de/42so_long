@@ -6,22 +6,11 @@
 /*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 16:01:13 by daniema3          #+#    #+#             */
-/*   Updated: 2025/03/04 14:44:20 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/03/04 15:42:16 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-void	redraw_texture(t_map map, char id, int y, int x)
-{
-	void	*img;
-
-	if (id == 'P')
-		img = map.assets.player;
-	else
-		img = map.assets.bg;
-	mlx_put_image_to_window(map.mlx, map.win, img, x * 16, y * 16);
-}
 
 int	move_player(t_map *map, int x, int y)
 {
@@ -40,11 +29,9 @@ int	move_player(t_map *map, int x, int y)
 	}
 	else if (map->arr[new_y][new_x] == 'C')
 		map->keys--;
-	map->arr[new_y][new_x] = 'P';
 	map->arr[map->pl.y][map->pl.x] = '0';
-	redraw_texture(*map, 'P', new_y, new_x);
-	redraw_texture(*map, '0', map->pl.y, map->pl.x);
-	map->pl.x = new_x;
-	map->pl.y = new_y;
+	update_asset(map, map->pl.x, map->pl.y);
+	map->arr[new_y][new_x] = 'P';
+	update_asset(map, new_x, new_y);
 	return (1);
 }

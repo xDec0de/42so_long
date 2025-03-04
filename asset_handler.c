@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 13:13:58 by daniema3          #+#    #+#             */
-/*   Updated: 2025/03/04 15:23:26 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/03/04 15:42:54 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	put_asset(t_map *map, void *asset, int x, int y)
 		x * ASSET_SIZE, y * ASSET_SIZE);
 }
 
-void	draw_asset(t_map *map, int x, int y)
+void	update_asset(t_map *map, int x, int y)
 {
 	if (map->arr[y][x] == '1')
 		put_asset(map, map->assets.wall, x, y);
@@ -76,7 +76,7 @@ int	draw_map(t_map *map)
 		x = 0;
 		while (x < map->length)
 		{
-			draw_asset(map, x, y);
+			update_asset(map, x, y);
 			x++;
 		}
 		y++;
