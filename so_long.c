@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 10:20:33 by daniema3          #+#    #+#             */
-/*   Updated: 2025/03/04 22:26:42 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/03/04 23:38:08 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,36 @@
 
 int	user_end(t_map *map)
 {
-	if (map != NULL && map->mlx != NULL && map->win != NULL)
-		mlx_destroy_window(map->mlx, map->win);
-	exit(0);
+	exit_sl(map, NULL, 0);
+	return (0);
+}
+
+void	free_assets(t_map *map)
+{
+	if (map->assets.bg != NULL)
+		mlx_destroy_image(map->mlx, map->assets.bg);
+	if (map->assets.exit != NULL)
+		mlx_destroy_image(map->mlx, map->assets.exit);
+	if (map->assets.key != NULL)
+		mlx_destroy_image(map->mlx, map->assets.key);
+	if (map->assets.player != NULL)
+		mlx_destroy_image(map->mlx, map->assets.player);
+	if (map->assets.wall != NULL)
+		mlx_destroy_image(map->mlx, map->assets.wall);
 }
 
 void	exit_sl(t_map *map, char *msg, int code)
 {
 	int	i;
 
-	if (map != NULL && map->mlx != NULL && map->win != NULL)
-		mlx_destroy_window(map->mlx, map->win);
+	if (map != NULL && map->mlx != NULL)
+	{
+		mlx_destroy_display(map->mlx);
+		if (map->win != NULL)
+			mlx_destroy_window(map->mlx, map->win);
+		free_assets(map);
+		free(map->mlx);
+	}
 	if (msg != NULL)
 		ft_printf(msg);
 	i = -1;
