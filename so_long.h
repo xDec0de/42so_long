@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 12:23:44 by daniema3          #+#    #+#             */
-/*   Updated: 2025/03/04 21:46:11 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/03/04 22:36:12 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@
 # define INPUT_ERR "Error\n\e[0;31mInvalid input, usage\e[1;30m: \
  \e[0;33m./so_long map_name.ber\e[1;30m.\e[0m"
 
-# define MAP_FORMAT_ERR "Error\n\e[0;31mInvalid map format, maps must have \
-the extension \e[0;33m.ber\e[1;30m.\e[0m"
+# define MAP_EXTENSION_ERR "Error\n\e[0;31mInvalid map format, maps must have \
+the \e[0;33m.ber \e[0;31mIextension\e[1;30m.\e[0m"
 
 # define MAP_OPEN_ERR "Error\n\e[0;31mMap file could not be opened, \
 wrong name maybe?\e[0m"
@@ -110,18 +110,18 @@ typedef struct s_map
 // so_long.c
 int		handle_key(int keycode, t_map *map);
 int		user_end(t_map *map);
+void	exit_sl(t_map *map, char *msg, int code);
 int		close_win(int code);
 
 // map_reader.c
-int		map_free(char **map, int map_height, int return_value);
-int		parse_map_input(char **args);
+void	parse_map_input(char **args);
 
 // map_validator.c
-int		validate_map_content(t_map map);
+void	validate_map_content(t_map map);
 
 // asset_handler.c
 void	update_asset(t_map *map, int x, int y);
-int		draw_map(t_map *map);
+void	draw_map(t_map *map);
 
 // player_handler.c
 int		move_player(t_map *map, int x, int y);

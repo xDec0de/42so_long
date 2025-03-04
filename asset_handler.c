@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 13:13:58 by daniema3          #+#    #+#             */
-/*   Updated: 2025/03/04 15:42:54 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/03/04 22:38:45 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	update_asset(t_map *map, int x, int y)
 	}
 }
 
-int	draw_map(t_map *map)
+void	draw_map(t_map *map)
 {
 	int		x;
 	int		y;
@@ -70,7 +70,7 @@ int	draw_map(t_map *map)
 	y = 0;
 	*map = cache_assets(*map);
 	if (map->mlx == NULL || map->win == NULL)
-		return (map_free(map->arr, map->height, 8));
+		exit_sl(map, MLX_ERR, 8);
 	while (y < map->height)
 	{
 		x = 0;
@@ -84,5 +84,5 @@ int	draw_map(t_map *map)
 	mlx_key_hook(map->win, handle_key, map);
 	mlx_hook(map->win, 17, 0L, user_end, map);
 	mlx_loop(map->mlx);
-	return (map_free(map->arr, map->height, 0));
+	exit_sl(map, NULL, 0);
 }
