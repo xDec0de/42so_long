@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 12:23:44 by daniema3          #+#    #+#             */
-/*   Updated: 2025/03/04 21:35:54 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/03/04 21:46:11 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ typedef struct s_assets
 typedef struct s_map
 {
 	char		**arr;
+	char		*verify_arr[MAX_MAP_HEIGHT];
 	int			height;
 	int			length;
 	int			keys;
