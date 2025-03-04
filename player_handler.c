@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 16:01:13 by daniema3          #+#    #+#             */
-/*   Updated: 2025/03/04 14:21:34 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/03/04 14:44:20 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,15 @@ int	move_player(t_map *map, int x, int y)
 	int	new_x;
 	int	new_y;
 
-	new_x = map->pl.x+ x;
-	new_y = map->pl.y+ y;
+	new_x = map->pl.x + x;
+	new_y = map->pl.y + y;
 	if (map->arr[new_y][new_x] == '1')
-		return (1);
+		return (0);
 	else if (map->arr[new_y][new_x] == 'E')
 	{
 		if (map->keys == 0)
 			user_end(map);
-		return (1);
+		return (0);
 	}
 	else if (map->arr[new_y][new_x] == 'C')
 		map->keys--;
@@ -46,5 +46,5 @@ int	move_player(t_map *map, int x, int y)
 	redraw_texture(*map, '0', map->pl.y, map->pl.x);
 	map->pl.x = new_x;
 	map->pl.y = new_y;
-	return (0);
+	return (1);
 }

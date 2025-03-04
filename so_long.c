@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 10:20:33 by daniema3          #+#    #+#             */
-/*   Updated: 2025/03/04 14:12:10 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/03/04 14:45:03 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	handle_key(int keycode, t_map *map)
 {
 	int	has_moved;
 
-	has_moved = 1;
+	has_moved = 0;
 	if (keycode == KEY_ESC)
 		user_end(map);
 	else if (keycode == KEY_UP || keycode == KEY_W)
