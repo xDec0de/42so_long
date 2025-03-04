@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 10:20:33 by daniema3          #+#    #+#             */
-/*   Updated: 2025/03/04 17:29:43 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/03/04 21:36:08 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int	close_win(int code)
 	else if (code == 10)
 		ft_printf(MAP_OBJ_ERR"\e[0m\n");
 	else if (code == 11)
-		ft_printf(MAP_PLYR_ERR"\e[0m\n");
+		ft_printf(MAP_IMPOSSIBLE"\e[0m\n");
 	exit(code);
 	return (code);
 }

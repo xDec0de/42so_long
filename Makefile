@@ -13,7 +13,7 @@
 NAME = so_long
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -I minilibx-linux
+CFLAGS = -Wall -Wextra -Werror -g3 -I minilibx-linux
 MLXFLAGS = -L minilibx-linux/ -lmlx -lXext -lX11
 
 SRCS =	strutils.c\

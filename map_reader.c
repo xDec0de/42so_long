@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 14:00:19 by danimart          #+#    #+#             */
-/*   Updated: 2025/03/04 15:23:42 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/03/04 17:18:23 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ t_map	create_base_map(char **map, int map_height)
 int	read_map_file(char *map_name)
 {
 	int		fd;
-	char	*map[1024];
+	char	*map[MAX_MAP_HEIGHT];
 	char	*current_map_line;
 	int		i;
 
@@ -49,7 +49,7 @@ int	read_map_file(char *map_name)
 	if (fd < 0)
 		return (3);
 	i = 0;
-	while (i < 1024)
+	while (i < MAX_MAP_HEIGHT)
 	{
 		current_map_line = get_next_line(fd);
 		if (current_map_line == NULL)

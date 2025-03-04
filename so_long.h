@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 12:23:44 by daniema3          #+#    #+#             */
-/*   Updated: 2025/03/04 17:28:04 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/03/04 21:35:54 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@
 # include "printf/ft_printf.h"
 
 # define BUFFER_SIZE 1024
+
+# define MAX_MAP_HEIGHT 1024
+# define MAX_MAP_LENGTH 1024
 
 # define INPUT_ERR "Error\n\e[0;31mInvalid input, usage\e[1;30m: \
  \e[0;33m./so_long map_name.ber\e[1;30m.\e[0m"
@@ -40,18 +43,18 @@ wrong name maybe?\e[0m"
 \e[0;31mMap is not a rectangle, some lines are... So_long\e[1;30m.\e[0m"
 
 # define MAP_SIZE_ERR "Error\n\e[0;31mInvalid map content\e[1;30m:\
- \e[0;31mMap is too big, max map dimensions are\
- \e[0;33m1024x1024\e[1;30m.\e[0m"
+ \e[0;31mMap is too big.\e[1;30m.\e[0m"
 
 # define MAP_STRCT_ERR "Error\n\e[0;31mInvalid map content\e[1;30m: \
 \e[0;31mMap must be closed with walls\e[1;30m.\e[0m"
 
 # define MAP_OBJ_ERR "Error\n\e[0;31mInvalid map content\e[1;30m: \
-\e[0;31mRequired objects are missing \e[1;30m(\e[0;31mMap\
-must have at least one exit and one collectable\e[1;30m).\e[0m"
+\e[0;31mMissing or too many objects. \e[1;30m(\e[0;31mMap\
+ must have only one exit, one player and at least one\
+ collectable\e[1;30m).\e[0m"
 
-# define MAP_PLYR_ERR "Error\n\e[0;31mInvalid map content\e[1;30m: \
-\e[0;31mMap must have one player\e[1;30m.\e[0m"
+# define MAP_IMPOSSIBLE "Error\n\e[0;31mInvalid map content\e[1;30m: \
+\e[0;31mMap is impossible to win, please nerf\e[1;30m.\e[0m"
 
 # define MLX_ERR "Error\n\e[0;31mMlx error\e[1;30m.\e[0m"
 

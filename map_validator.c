@@ -6,45 +6,88 @@
 /*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 20:55:46 by daniema3          #+#    #+#             */
-/*   Updated: 2025/03/03 21:10:12 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/03/04 21:36:46 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	validate_map_gameplay(t_map *map, char **maparr)
+int	validate_map_gameplay(t_map *map, int x, int y, char **arr)
 {
-	return (draw_map(map));
+	int	points;
+
+	points = 0;
+	if (arr[y][x] == '1')
+		return (0);
+	if (arr[y][x] == 'E' || arr[y][x] == 'C')
+		points++;
+	arr[y][x] = '1';
+	points += validate_map_gameplay(map, x + 1, y, arr);
+	points += validate_map_gameplay(map, x - 1, y, arr);
+	points += validate_map_gameplay(map, x, y + 1, arr);
+	points += validate_map_gameplay(map, x, y - 1, arr);
+	return (points);
 }
 
-char **clone_map_array(t_map *map)
+void	clone_map_to_array(t_map *map, char **arr)
 {
-	char	**arr;
-	int		x;
-	int		y;
+	int	x;
+	int	y;
 
 	x = 0;
 	y = 0;
-	arr = malloc(map->height);
 	while (y < map->height)
 	{
 		x = 0;
-		arr[y] = malloc(map->height * sizeof(char));
+		arr[y] = malloc(ft_strlen(map->arr[y], 0) * sizeof(char));
 		while (x < map->length)
 		{
-			arr[x][y] = map->arr[x][y];
+			arr[y][x] = map->arr[y][x];
+			if (arr[y][x] == 'P')
+			{
+				map->pl.x = x;
+				map->pl.y = y;
+			}
 			x++;
 		}
 		y++;
 	}
 }
 
-int	validate_map_objects(t_map *map, int player_amount)
+int	validate_map_structure(t_map *map)
+{
+	int		i;
+	int		j;
+	char	*arr[MAX_MAP_HEIGHT];
+
+	i = 0;
+	clone_map_to_array(map, arr);
+	while (i < map->height)
+	{
+		j = 0;
+		while (j < map->length && (i == 0 || i == map->height - 1))
+		{
+			if (map->arr[i][j] != '1')
+				return (map_free(map->arr, map->height, 9));
+			j++;
+		}
+		if (map->arr[i][0] != '1' || map->arr[i][map->length - 1] != '1')
+			return (map_free(map->arr, map->height, 9));
+		i++;
+	}
+	if (validate_map_gameplay(map, map->pl.x, map->pl.y, arr) == map->keys + 1)
+		return (draw_map(map));
+	return (11);
+}
+
+int	validate_map_objects(t_map *map)
 {
 	int		y;
 	int		x;
+	int		player_amount;
 
 	y = 0;
+	player_amount = 0;
 	while (y < map->height)
 	{
 		x = 0;
@@ -60,33 +103,9 @@ int	validate_map_objects(t_map *map, int player_amount)
 		}
 		y++;
 	}
-	if (map->exits == 0 || map->keys == 0)
+	if (map->exits != 1 || map->keys == 0 || player_amount != 1)
 		return (map_free(map->arr, map->height, 10));
-	else if (player_amount != 1)
-		return (map_free(map->arr, map->height, 11));
-	return (validate_map_gameplay(map, clone_map_array(map)));
-}
-
-int	validate_map_structure(t_map map)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (i < map.height)
-	{
-		j = 0;
-		while (j < map.length && (i == 0 || i == map.height - 1))
-		{
-			if (map.arr[i][j] != '1')
-				return (map_free(map.arr, map.height, 9));
-			j++;
-		}
-		if (map.arr[i][0] != '1' || map.arr[i][map.length - 1] != '1')
-			return (map_free(map.arr, map.height, 9));
-		i++;
-	}
-	return (validate_map_objects(&map, 0));
+	return (validate_map_structure(map));
 }
 
 int	validate_map_content(t_map map)
@@ -113,7 +132,7 @@ int	validate_map_content(t_map map)
 	}
 	if (map.height == 0 || map.length == 0)
 		return (map_free(map.arr, map.height, 5));
-	else if (map.length > 1024)
+	else if (map.length > MAX_MAP_LENGTH)
 		return (map_free(map.arr, map.height, 6));
-	return (validate_map_structure(map));
+	return (validate_map_objects(&map));
 }
