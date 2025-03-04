@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 12:23:44 by daniema3          #+#    #+#             */
-/*   Updated: 2025/03/04 15:34:34 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/03/04 17:28:04 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 
 # include <mlx.h>
 # include <stdlib.h>
-# include <stdio.h>
 # include <fcntl.h>
 # include <unistd.h>
+# include "printf/ft_printf.h"
 
 # define BUFFER_SIZE 1024
 

@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 10:20:33 by daniema3          #+#    #+#             */
-/*   Updated: 2025/03/04 14:45:03 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/03/04 17:29:43 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,34 +35,34 @@ int	handle_key(int keycode, t_map *map)
 	else if (keycode == KEY_RIGHT || keycode == KEY_D)
 		has_moved = move_player(map, 1, 0);
 	if (has_moved)
-		printf("Movements: %d\n", ++map->movements);
+		ft_printf("Movements: %d\n", ++map->movements);
 	return (0);
 }
 
 int	close_win(int code)
 {
 	if (code == 1)
-		printf(INPUT_ERR"\e[0m\n");
+		ft_printf(INPUT_ERR"\e[0m\n");
 	else if (code == 2)
-		printf(MAP_FORMAT_ERR"\e[0m\n");
+		ft_printf(MAP_FORMAT_ERR"\e[0m\n");
 	else if (code == 3)
-		printf(MAP_OPEN_ERR"\e[0m\n");
+		ft_printf(MAP_OPEN_ERR"\e[0m\n");
 	else if (code == 4)
-		printf(MAP_CONTENT_ERR"\e[0m\n");
+		ft_printf(MAP_CONTENT_ERR"\e[0m\n");
 	else if (code == 5)
-		printf(MAP_EMPTY_ERR"\e[0m\n");
+		ft_printf(MAP_EMPTY_ERR"\e[0m\n");
 	else if (code == 6)
-		printf(MAP_SIZE_ERR"\e[0m\n");
+		ft_printf(MAP_SIZE_ERR"\e[0m\n");
 	else if (code == 7)
-		printf(MAP_LEN_ERR"\e[0m\n");
+		ft_printf(MAP_LEN_ERR"\e[0m\n");
 	else if (code == 8)
-		printf(MLX_ERR"\e[0m\n");
+		ft_printf(MLX_ERR"\e[0m\n");
 	else if (code == 9)
-		printf(MAP_STRCT_ERR"\e[0m\n");
+		ft_printf(MAP_STRCT_ERR"\e[0m\n");
 	else if (code == 10)
-		printf(MAP_OBJ_ERR"\e[0m\n");
+		ft_printf(MAP_OBJ_ERR"\e[0m\n");
 	else if (code == 11)
-		printf(MAP_PLYR_ERR"\e[0m\n");
+		ft_printf(MAP_PLYR_ERR"\e[0m\n");
 	exit(code);
 	return (code);
 }
