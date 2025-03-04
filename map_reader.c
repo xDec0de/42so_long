@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 14:00:19 by danimart          #+#    #+#             */
-/*   Updated: 2025/03/03 20:56:04 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/03/04 15:23:42 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,18 @@ int	map_free(char **map, int map_height, int return_value)
 	}
 	*map = NULL;
 	return (return_value);
+}
+
+t_map	create_base_map(char **map, int map_height)
+{
+	t_map		res;
+
+	res.arr = map;
+	res.height = map_height;
+	res.exits = 0;
+	res.keys = 0;
+	res.movements = 0;
+	return (res);
 }
 
 int	read_map_file(char *map_name)

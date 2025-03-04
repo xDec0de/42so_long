@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 12:23:44 by daniema3          #+#    #+#             */
-/*   Updated: 2025/03/04 14:22:04 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/03/04 15:24:02 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ must have at least one exit and one collectable\e[1;30m).\e[0m"
 
 # define WINDOW_TITLE "so_long"
 
+# define ASSET_SIZE 16
 # define ASSET_WALL "./assets/wall.xpm"
 # define ASSET_KEY "./assets/key.xpm"
 # define ASSET_DOOR "./assets/door.xpm"
@@ -115,7 +116,6 @@ int		parse_map_input(char **args);
 int		validate_map_content(t_map map);
 
 // map_handler.c
-t_map	create_base_map(char **map, int map_height);
 int		draw_map(t_map *map);
 
 // player_handler.c
