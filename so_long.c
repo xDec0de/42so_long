@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 10:20:33 by daniema3          #+#    #+#             */
-/*   Updated: 2025/02/12 16:11:32 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/03/04 14:12:10 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,20 +21,20 @@ int	user_end(t_map *map)
 
 int	handle_key(int keycode, t_map *map)
 {
-	int	res;
+	int	has_moved;
 
-	res = 1;
+	has_moved = 1;
 	if (keycode == KEY_ESC)
 		user_end(map);
 	else if (keycode == KEY_UP || keycode == KEY_W)
-		res = move_player_up(map);
+		has_moved = move_player(map, 0, -1);
 	else if (keycode == KEY_LEFT || keycode == KEY_A)
-		res = move_player_left(map);
+		has_moved = move_player(map, -1, 0);
 	else if (keycode == KEY_DOWN || keycode == KEY_S)
-		res = move_player_down(map);
+		has_moved = move_player(map, 0, 1);
 	else if (keycode == KEY_RIGHT || keycode == KEY_D)
-		res = move_player_right(map);
-	if (res == 0)
+		has_moved = move_player(map, 1, 0);
+	if (has_moved)
 		printf("Movements: %d\n", ++map->movements);
 	return (0);
 }

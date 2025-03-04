@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 16:01:13 by daniema3          #+#    #+#             */
-/*   Updated: 2025/03/03 20:59:41 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/03/04 14:06:12 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,82 +23,28 @@ void	redraw_texture(t_map map, char id, int y, int x)
 	mlx_put_image_to_window(map.mlx, map.win, img, x * 16, y * 16);
 }
 
-int	move_player_up(t_map *map)
+int	move_player(t_map *map, int x, int y)
 {
-	if (map->arr[map->pl.y - 1][map->pl.x] == '1')
-		return (1);
-	else if (map->arr[map->pl.y - 1][map->pl.x] == 'E')
-	{
-		if (map->keys == 0)
-			user_end(map);
-		return (1);
-	}
-	else if (map->arr[map->pl.y - 1][map->pl.x] == 'C')
-		map->keys--;
-	map->arr[map->pl.y - 1][map->pl.x] = 'P';
-	map->arr[map->pl.y][map->pl.x] = '0';
-	redraw_texture(*map, 'P', map->pl.y - 1, map->pl.x);
-	redraw_texture(*map, '0', map->pl.y, map->pl.x);
-	map->pl.y--;
-	return (0);
-}
+	int	new_x;
+	int	new_y;
 
-int	move_player_down(t_map *map)
-{
-	if (map->arr[map->pl.y + 1][map->pl.x] == '1')
+	new_x = map->pl.x+ x;
+	new_y = map->pl.y+ y;
+	if (map->arr[new_y][new_x] == '1')
 		return (1);
-	else if (map->arr[map->pl.y + 1][map->pl.x] == 'E')
+	else if (map->arr[new_y][new_x] == 'E')
 	{
 		if (map->keys == 0)
 			user_end(map);
 		return (1);
 	}
-	else if (map->arr[map->pl.y + 1][map->pl.x] == 'C')
+	else if (map->arr[new_y][new_x] == 'C')
 		map->keys--;
-	map->arr[map->pl.y + 1][map->pl.x] = 'P';
+	map->arr[new_y][new_x] = 'P';
 	map->arr[map->pl.y][map->pl.x] = '0';
-	redraw_texture(*map, 'P', map->pl.y + 1, map->pl.x);
+	redraw_texture(*map, 'P', new_y, new_x);
 	redraw_texture(*map, '0', map->pl.y, map->pl.x);
-	map->pl.y++;
-	return (0);
-}
-
-int	move_player_right(t_map *map)
-{
-	if (map->arr[map->pl.y][map->pl.x + 1] == '1')
-		return (1);
-	else if (map->arr[map->pl.y][map->pl.x + 1] == 'E')
-	{
-		if (map->keys == 0)
-			user_end(map);
-		return (1);
-	}
-	else if (map->arr[map->pl.y][map->pl.x + 1] == 'C')
-		map->keys--;
-	map->arr[map->pl.y][map->pl.x + 1] = 'P';
-	map->arr[map->pl.y][map->pl.x] = '0';
-	redraw_texture(*map, 'P', map->pl.y, map->pl.x + 1);
-	redraw_texture(*map, '0', map->pl.y, map->pl.x);
-	map->pl.x++;
-	return (0);
-}
-
-int	move_player_left(t_map *map)
-{
-	if (map->arr[map->pl.y][map->pl.x - 1] == '1')
-		return (1);
-	else if (map->arr[map->pl.y][map->pl.x - 1] == 'E')
-	{
-		if (map->keys == 0)
-			user_end(map);
-		return (1);
-	}
-	else if (map->arr[map->pl.y][map->pl.x - 1] == 'C')
-		map->keys--;
-	map->arr[map->pl.y][map->pl.x - 1] = 'P';
-	map->arr[map->pl.y][map->pl.x] = '0';
-	redraw_texture(*map, 'P', map->pl.y, map->pl.x - 1);
-	redraw_texture(*map, '0', map->pl.y, map->pl.x);
-	map->pl.x--;
+	map->pl.x = new_x;
+	map->pl.y = new_y;
 	return (0);
 }
