@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 20:55:46 by daniema3          #+#    #+#             */
-/*   Updated: 2025/03/04 22:37:24 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/03/05 18:36:15 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	create_verify_array(t_map *map)
 	while (y < map->height)
 	{
 		x = 0;
-		map->verify_arr[y] = malloc(ft_strlen(map->arr[y], 0) * sizeof(char));
+		map->verify_arr[y] = sl_calloc(sl_strlen(map->arr[y], 0));
 		while (x < map->length)
 		{
 			map->verify_arr[y][x] = map->arr[y][x];
@@ -112,12 +112,12 @@ void	validate_map_content(t_map map)
 	int	i;
 	int	j;
 
-	map.length = ft_strlen(map.arr[0], 1);
+	map.length = sl_strlen(map.arr[0], 1);
 	i = 1;
 	while (i < map.height)
 	{
 		j = 0;
-		if (ft_strlen(map.arr[i], 1) != map.length)
+		if (sl_strlen(map.arr[i], 1) != map.length)
 			exit_sl(&map, MAP_LEN_ERR, 7);
 		while (map.arr[i][j] != '\0' && map.arr[i][j] != '\n')
 		{

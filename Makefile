@@ -6,7 +6,7 @@
 #    By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/05 10:19:42 by daniema3          #+#    #+#              #
-#    Updated: 2025/03/05 16:41:26 by daniema3         ###   ########.fr        #
+#    Updated: 2025/03/05 18:31:24 by daniema3         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,10 +16,16 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror -g3 -I minilibx-linux
 MLXFLAGS = -L minilibx-linux/ -lmlx -lXext -lX11
 
-SRCS =	strutils.c\
-		printf/ft_printf.c\
-		printf/write_num.c\
-		printf/write_txt.c\
+SRCS =	util/sl_calloc.c\
+		util/sl_strchr.c\
+		util/sl_strdup.c\
+		util/sl_strjoin.c\
+		util/sl_strlcpy.c\
+		util/sl_strlen.c\
+		util/sl_substr.c\
+		util/printf/ft_printf.c\
+		util/printf/write_num.c\
+		util/printf/write_txt.c\
 		so_long.c\
 		map_reader.c\
 		map_validator.c\
