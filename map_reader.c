@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 14:00:19 by danimart          #+#    #+#             */
-/*   Updated: 2025/03/05 14:31:13 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/03/05 14:54:30 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void	read_map_file(int fd, char *raw_map)
 	len = 0;
 	while (read_res > 0)
 	{
-		read_buff = malloc(BUFFER_SIZE * sizeof(char));
+		read_buff = malloc((BUFFER_SIZE + 1) * sizeof(char));
 		read_res = read(fd, read_buff, BUFFER_SIZE);
 		len += read_res;
 		if (read_res == -1)
@@ -94,42 +94,12 @@ void	read_map_file(int fd, char *raw_map)
 			free(read_buff);
 			exit_sl(NULL, READ_ERR, READ_ERRC);
 		}
-		raw_map = ft_strjoin(raw_map, read_buff);
-		free(read_buff);
+		raw_map = ft_strjoin(raw_map, read_buff, 1);
 	}
 	raw_map[len] = '\0';
 	close(fd);
 	process_raw_map(init_map(count_lines(raw_map)), raw_map);
 }
-
-/*void	read_map_file(char *map_name)
-{
-	int		fd;
-	char	*map[MAX_MAP_HEIGHT];
-	char	*current_map_line;
-	int		i;
-
-	fd = open(map_name, O_RDONLY);
-	if (fd < 0)
-		exit_sl(NULL, MAP_OPEN_ERR, 3);
-	i = 0;
-	while (i < MAX_MAP_HEIGHT)
-	{
-		current_map_line = get_next_line(fd);
-		if (current_map_line == NULL)
-			break ;
-		map[i++] = current_map_line;
-	}
-	current_map_line = get_next_line(fd);
-	if (current_map_line != NULL)
-	{
-		free(current_map_line);
-		close(fd);
-		exit_sl(NULL, MAP_SIZE_ERR, 6);
-	}
-	close(fd);
-	validate_map_content(create_base_map(map, i));
-}*/
 
 void	parse_map_input(char **args)
 {
