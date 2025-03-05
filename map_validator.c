@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 20:55:46 by daniema3          #+#    #+#             */
-/*   Updated: 2025/03/05 19:38:52 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/03/05 19:52:31 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,7 +132,5 @@ void	validate_map_content(t_map *map)
 	}
 	if (map->height == 0 || map->length == 0)
 		exit_sl(map, MAP_EMPTY_ERR, 5);
-	else if (map->length > MAX_MAP_LENGTH)
-		exit_sl(map, MAP_SIZE_ERR, 6);
 	validate_map_objects(map);
 }

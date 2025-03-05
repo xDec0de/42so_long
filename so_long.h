@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 12:23:44 by daniema3          #+#    #+#             */
-/*   Updated: 2025/03/05 18:57:05 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/03/05 19:52:01 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,6 @@
 # include "util/sl_utils.h"
 
 # define BUFFER_SIZE 1024
-
-# define MAX_MAP_HEIGHT 1024
-# define MAX_MAP_LENGTH 1024
 
 # define INPUT_ERR "Error\n\e[0;31mInvalid input, usage\e[1;30m: \
  \e[0;33m./so_long map_name.ber\e[1;30m.\e[0m"
