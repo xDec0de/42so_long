@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 14:00:19 by danimart          #+#    #+#             */
-/*   Updated: 2025/03/05 14:10:49 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/03/05 14:31:13 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_map	init_map(int height)
 
 	map.arr = malloc(height);
 	if (map.arr == NULL)
-		exit_sl(NULL, "MALLOC_FAIL_PLACEHOLDER\n", -1); // TODO: Add a proper error message
+		exit_sl(NULL, MALLOC_ERR, MALLOC_ERRC);
 	map.height = height;
 	map.length = 0;
 	map.keys = 0;
@@ -80,7 +80,7 @@ void	read_map_file(int fd, char *raw_map)
 	int		len;
 
 	if (fd < 0)
-		exit_sl(NULL, MAP_OPEN_ERR, 3);
+		exit_sl(NULL, MAP_OPEN_ERR, MAP_OPEN_ERRC);
 	read_res = 1;
 	len = 0;
 	while (read_res > 0)
@@ -92,7 +92,7 @@ void	read_map_file(int fd, char *raw_map)
 		{
 			free(raw_map);
 			free(read_buff);
-			exit_sl(NULL, "READ_FAIL_PLACEHOLDER\n", -1);  // TODO: Add a proper error message
+			exit_sl(NULL, READ_ERR, READ_ERRC);
 		}
 		raw_map = ft_strjoin(raw_map, read_buff);
 		free(read_buff);
@@ -141,9 +141,9 @@ void	parse_map_input(char **args)
 		size++;
 	if (size <= 3 || args[1][size - 1] != 'r' || args[1][size - 2] != 'e'
 		|| args[1][size - 3] != 'b' || args[1][size - 4] != '.')
-		exit_sl(NULL, MAP_EXTENSION_ERR, 2);
+		exit_sl(NULL, MAP_EXTENSION_ERR, MAP_EXTENSION_ERRC);
 	raw_map = ft_strdup("");
 	if (raw_map == NULL)
-		exit_sl(NULL, "MALLOC_FAIL_PLACEHOLDER\n", -1);
+		exit_sl(NULL, MALLOC_ERR, MALLOC_ERRC);
 	return (read_map_file(open(args[1], O_RDONLY), raw_map));
 }

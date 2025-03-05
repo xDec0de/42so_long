@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 10:20:33 by daniema3          #+#    #+#             */
-/*   Updated: 2025/03/05 00:49:37 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/03/05 14:13:56 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,6 @@ int	handle_key(int keycode, t_map *map)
 int	main(int argc, char **args)
 {
 	if (argc != 2)
-		exit_sl(NULL, INPUT_ERR, 1);
+		exit_sl(NULL, INPUT_ERR, INPUT_ERRC);
 	parse_map_input(args);
 }

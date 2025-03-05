@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 12:23:44 by daniema3          #+#    #+#             */
-/*   Updated: 2025/03/04 22:36:12 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/03/05 14:17:48 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,21 @@
 
 # define INPUT_ERR "Error\n\e[0;31mInvalid input, usage\e[1;30m: \
  \e[0;33m./so_long map_name.ber\e[1;30m.\e[0m"
+# define INPUT_ERRC 1
 
 # define MAP_EXTENSION_ERR "Error\n\e[0;31mInvalid map format, maps must have \
 the \e[0;33m.ber \e[0;31mIextension\e[1;30m.\e[0m"
+# define MAP_EXTENSION_ERRC 2
+
+# define MALLOC_ERR "Error\n\e[0;31mMalloc failed\e[1;30m.\e[0m"
+# define MALLOC_ERRC 3
 
 # define MAP_OPEN_ERR "Error\n\e[0;31mMap file could not be opened, \
 wrong name maybe?\e[0m"
+# define MAP_OPEN_ERRC 4
+
+# define READ_ERR "Error\n\e[0;31mRead failed\e[1;30m.\e[0m"
+# define READ_ERRC 4
 
 # define MAP_EMPTY_ERR "Error\n\e[0;31mInvalid map content\e[1;30m: \
 \e[0;31mMap is empty\e[1;30m.\e[0m"
