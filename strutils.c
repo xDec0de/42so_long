@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 11:08:07 by danimart          #+#    #+#             */
-/*   Updated: 2025/03/05 16:27:51 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/03/05 17:33:01 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,29 +91,44 @@ char	*ft_strjoin(char *s1, char *s2, int free_strs)
 	return (join);
 }
 
-char	*ft_substr(char *s, int start, int len)
+size_t	ft_strlcpy(char *dest, const char *src, size_t dstsize)
 {
-	char	*str;
-	int		i;
-	int		j;
+	size_t			i;
+	unsigned int	cont;
 
-	if (!s)
-		return (NULL);
-	if (start > ft_strlen(s, 0))
-		return (ft_strdup(""));
-	j = ft_strlen(&s[start], 0);
-	if (j < len)
-		len = j;
-	str = (char *) malloc((len + 1) * sizeof(char));
-	if (!str)
-		return (NULL);
 	i = 0;
-	while (i < len && s[start])
+	cont = 0;
+	while (src[cont] != '\0')
+		cont++;
+	if (dstsize == 0)
+		return (cont);
+	while (src[i] != '\0' && i < (dstsize - 1))
 	{
-		str[i] = s[start];
-		start++;
+		dest[i] = src[i];
 		i++;
 	}
-	str[i] = '\0';
-	return (str);
+	dest[i] = '\0';
+	return (cont);
+}
+
+char	*ft_substr(char *s, int start, int len)
+{
+	char	*substr;
+	int		size;
+
+	if (s == NULL)
+		return (NULL);
+	if (ft_strlen(s, 0) < start)
+		return (ft_strdup(""));
+	size = ft_strlen(&s[start], 0);
+	if (size < len)
+		len = size;
+	if (len + 1 > len)
+		substr = ft_calloc(len + 1);
+	else
+		substr = ft_calloc(len);
+	if (substr == NULL)
+		return (NULL);
+	ft_strlcpy(substr, &s[start], len + 1);
+	return (substr);
 }

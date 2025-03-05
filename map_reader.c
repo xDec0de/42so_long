@@ -6,54 +6,59 @@
 /*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 14:00:19 by danimart          #+#    #+#             */
-/*   Updated: 2025/03/05 16:28:03 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/03/05 17:38:48 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-t_map	init_map(int height)
+t_map	*init_map(int height)
 {
-	t_map	map;
+	t_map	*map;
 
-	map.arr = malloc(height);
-	if (map.arr == NULL)
+	map = malloc(sizeof(t_map));
+	if (map == NULL)
 		exit_sl(NULL, MALLOC_ERR, MALLOC_ERRC);
-	map.height = height;
-	map.length = 0;
-	map.keys = 0;
-	map.exits = 0;
-	map.movements = 0;
-	map.mlx = NULL;
-	map.win = NULL;
-	map.assets.bg = NULL;
-	map.assets.exit = NULL;
-	map.assets.key = NULL;
-	map.assets.player = NULL;
-	map.assets.wall = NULL;
-	map.pl.x = 0;
-	map.pl.y = 0;
+	map->arr = malloc((height + 1) * sizeof(char *));
+	if (map->arr == NULL)
+		exit_sl(NULL, MALLOC_ERR, MALLOC_ERRC);
+	map->height = height;
+	map->length = 0;
+	map->keys = 0;
+	map->exits = 0;
+	map->movements = 0;
+	map->mlx = NULL;
+	map->win = NULL;
+	map->assets.bg = NULL;
+	map->assets.exit = NULL;
+	map->assets.key = NULL;
+	map->assets.player = NULL;
+	map->assets.wall = NULL;
+	map->pl.x = 0;
+	map->pl.y = 0;
 	return (map);
 }
 
-void	process_raw_map(t_map map, char *raw_map)
+void	process_raw_map(t_map *map, char *raw_map)
 {
 	int	line;
 	int	last_nl;
+	char	*l;
 
 	line = 0;
-	last_nl = 0;
+	last_nl = ft_strchr(raw_map, '\n');
 	ft_printf("Raw map (From read):\n%s\n\nTo map array:\n", raw_map);
 	while (last_nl != -1)
 	{
-		last_nl = ft_strchr(raw_map, '\n');
-		map.arr[line] = ft_substr(raw_map, 0, last_nl);
+		l = ft_substr(raw_map, 0, last_nl);
+		map->arr[line] = l;
 		raw_map = ft_substr(raw_map, last_nl + 1, ft_strlen(raw_map, 0));
-		ft_printf("%s\n", map.arr[line]);
+		ft_printf("map->arr[%d] = %s\n", line, map->arr[line]);
+		last_nl = ft_strchr(raw_map, '\n');
 		line++;
 	}
 	free(raw_map);
-	exit_sl(&map, NULL, 0); // TODO: Fix double free
+	exit_sl(map, NULL, 0); // TODO: Fix double free
 	//exit(0);
 }
 
@@ -80,6 +85,7 @@ char	*ft_calloc(int amount)
 	res = malloc(amount * sizeof(char));
 	if (res == NULL)
 		return (NULL);
+	amount--;
 	while (amount >= 0)
 	{
 		res[amount] = '\0';

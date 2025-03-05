@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 16:30:37 by daniema3          #+#    #+#             */
-/*   Updated: 2025/03/05 16:42:54 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/03/05 16:58:03 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,5 +74,6 @@ void	exit_sl(t_map *map, char *msg, int code)
 		free(map->mlx);
 	}
 	free_arrays(map);
+	free(map);
 	exit(code);
 }

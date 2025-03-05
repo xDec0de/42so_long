@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 12:23:44 by daniema3          #+#    #+#             */
-/*   Updated: 2025/03/05 16:45:58 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/03/05 17:31:58 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,6 +142,8 @@ char	*get_next_line(int fd);
 int		ft_strlen(const char *str, int ignore_new_line);
 char	*ft_strdup(char *s);
 int		ft_strchr(char *s, char ch);
+
+char	*ft_calloc(int amount);
 
 /**
  * @brief Joins two strings (`s1` and `s2`). Optionally
