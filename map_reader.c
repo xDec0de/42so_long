@@ -94,6 +94,7 @@ void	read_map_file(int fd)
 			exit_sl(NULL, "READ_FAIL_PLACEHOLDER\n", -1);  // TODO: Add a proper error message
 		}
 		raw_map = ft_strjoin(raw_map, read_buff);
+		free(read_buff);
 	}
 	close(fd);
 	process_raw_map(init_map(count_lines(raw_map)), raw_map);
