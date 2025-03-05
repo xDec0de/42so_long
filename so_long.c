@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 10:20:33 by daniema3          #+#    #+#             */
-/*   Updated: 2025/03/04 23:58:14 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/03/05 00:49:37 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,11 @@ void	exit_sl(t_map *map, char *msg, int code)
 {
 	int	i;
 
-	if (map != NULL && map->mlx != NULL)
+	if (msg != NULL)
+		ft_printf(msg);
+	if (map == NULL)
+		exit(code);
+	if (map->mlx != NULL)
 	{
 		if (map->win != NULL)
 			mlx_destroy_window(map->mlx, map->win);
@@ -44,8 +48,6 @@ void	exit_sl(t_map *map, char *msg, int code)
 		mlx_destroy_display(map->mlx);
 		free(map->mlx);
 	}
-	if (msg != NULL)
-		ft_printf(msg);
 	i = -1;
 	if (map->arr != NULL)
 		while (++i < map->height)

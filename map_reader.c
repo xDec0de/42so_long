@@ -6,25 +6,103 @@
 /*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 14:00:19 by danimart          #+#    #+#             */
-/*   Updated: 2025/03/04 23:48:27 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/03/05 01:16:20 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-t_map	create_base_map(char **map, int map_height)
+t_map	init_map(void)
 {
-	t_map		res;
+	t_map	map;
 
-	res.arr = map;
-	res.height = map_height;
-	res.exits = 0;
-	res.keys = 0;
-	res.movements = 0;
-	return (res);
+	map.arr = NULL;
+	map.height = 0;
+	map.length = 0;
+	map.keys = 0;
+	map.exits = 0;
+	map.movements = 0;
+	map.mlx = NULL;
+	map.win = NULL;
+	map.assets.bg = NULL;
+	map.assets.exit = NULL;
+	map.assets.key = NULL;
+	map.assets.player = NULL;
+	map.assets.wall = NULL;
+	map.pl.x = 0;
+	map.pl.y = 0;
+	return (map);
 }
 
-void	read_map_file(char *map_name)
+void	process_raw_map(t_map map, char *raw_map, int lines)
+{
+	int	line;
+	int	last_nl;
+
+	line = 0;
+	last_nl = 0;
+	map.arr = malloc(lines);
+	if (map.arr == NULL)
+	{
+		free(raw_map);
+		exit_sl(&map, "MALLOC_FAIL_PLACEHOLDER\n", -1); // TODO: Add a proper error message
+	}
+	ft_printf("Raw map (From read):\n%s\n\nTo map array:\n", raw_map);
+	while (last_nl != -1)
+	{
+		last_nl = ft_strchr(raw_map, '\n');
+		map.arr[line] = ft_substr(raw_map, 0, last_nl);
+		raw_map = ft_substr(raw_map, last_nl + 1, ft_strlen(raw_map, 0));
+		ft_printf("%s\n", map.arr[line]);
+		line++;
+	}
+	free(raw_map);
+	exit_sl(&map, NULL, 0);
+}
+
+int	count_lines(char *raw_map)
+{
+	int		i;
+	int		lines;
+
+	lines = 0;
+	i = 0;
+	while (raw_map[i] != '\0')
+	{
+		if (raw_map[i] == '\n')
+			lines++;
+		i++;
+	}
+	return (lines);
+}
+
+void	read_map_file(int fd)
+{
+	int		read_res;
+	char	*raw_map;
+	char	*read_buff;
+
+	if (fd < 0)
+		exit_sl(NULL, MAP_OPEN_ERR, 3);
+	raw_map = ft_strdup("");
+	read_res = 1;
+	while (read_res > 0)
+	{
+		read_buff = malloc(BUFFER_SIZE * sizeof(char));
+		read_res = read(fd, read_buff, BUFFER_SIZE);
+		if (read_res == -1)
+		{
+			free(raw_map);
+			free(read_buff);
+			exit_sl(NULL, "READ_FAIL_PLACEHOLDER\n", -1);  // TODO: Add a proper error message
+		}
+		raw_map = ft_strjoin(raw_map, read_buff);
+	}
+	close(fd);
+	process_raw_map(init_map(), raw_map, count_lines(raw_map));
+}
+
+/*void	read_map_file(char *map_name)
 {
 	int		fd;
 	char	*map[MAX_MAP_HEIGHT];
@@ -51,7 +129,7 @@ void	read_map_file(char *map_name)
 	}
 	close(fd);
 	validate_map_content(create_base_map(map, i));
-}
+}*/
 
 void	parse_map_input(char **args)
 {
@@ -63,5 +141,5 @@ void	parse_map_input(char **args)
 	if (size <= 3 || args[1][size - 1] != 'r' || args[1][size - 2] != 'e'
 		|| args[1][size - 3] != 'b' || args[1][size - 4] != '.')
 		exit_sl(NULL, MAP_EXTENSION_ERR, 2);
-	return (read_map_file(args[1]));
+	return (read_map_file(open(args[1], O_RDONLY)));
 }
