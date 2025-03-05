@@ -6,7 +6,7 @@
 #    By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/05 10:19:42 by daniema3          #+#    #+#              #
-#    Updated: 2025/03/05 14:41:13 by daniema3         ###   ########.fr        #
+#    Updated: 2025/03/05 16:41:26 by daniema3         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,8 @@ SRCS =	strutils.c\
 		map_reader.c\
 		map_validator.c\
 		asset_handler.c\
-		player_handler.c
+		player_handler.c\
+		exit_sl.c
 
 OBJS = $(SRCS:%.c=%.o)
 

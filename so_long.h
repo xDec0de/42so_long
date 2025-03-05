@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 12:23:44 by daniema3          #+#    #+#             */
-/*   Updated: 2025/03/05 14:51:54 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/03/05 16:45:58 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,9 +118,6 @@ typedef struct s_map
 
 // so_long.c
 int		handle_key(int keycode, t_map *map);
-int		user_end(t_map *map);
-void	exit_sl(t_map *map, char *msg, int code);
-int		close_win(int code);
 
 // map_reader.c
 void	parse_map_input(char **args);
@@ -165,5 +162,11 @@ int		ft_strchr(char *s, char ch);
 char	*ft_strjoin(char *s1, char *s2, int free_strs);
 
 char	*ft_substr(char *s, int start, int len);
+
+/*
+ - Free & exit (exit_sl.c)
+ */
+int		user_end(t_map *map);
+void	exit_sl(t_map *map, char *msg, int code);
 
 #endif

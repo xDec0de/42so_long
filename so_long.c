@@ -6,57 +6,11 @@
 /*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 10:20:33 by daniema3          #+#    #+#             */
-/*   Updated: 2025/03/05 14:13:56 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/03/05 16:41:02 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-int	user_end(t_map *map)
-{
-	exit_sl(map, NULL, 0);
-	return (0);
-}
-
-void	free_assets(t_map *map)
-{
-	if (map->assets.bg != NULL)
-		mlx_destroy_image(map->mlx, map->assets.bg);
-	if (map->assets.exit != NULL)
-		mlx_destroy_image(map->mlx, map->assets.exit);
-	if (map->assets.key != NULL)
-		mlx_destroy_image(map->mlx, map->assets.key);
-	if (map->assets.player != NULL)
-		mlx_destroy_image(map->mlx, map->assets.player);
-	if (map->assets.wall != NULL)
-		mlx_destroy_image(map->mlx, map->assets.wall);
-}
-
-void	exit_sl(t_map *map, char *msg, int code)
-{
-	int	i;
-
-	if (msg != NULL)
-		ft_printf(msg);
-	if (map == NULL)
-		exit(code);
-	if (map->mlx != NULL)
-	{
-		if (map->win != NULL)
-			mlx_destroy_window(map->mlx, map->win);
-		free_assets(map);
-		mlx_destroy_display(map->mlx);
-		free(map->mlx);
-	}
-	i = -1;
-	if (map->arr != NULL)
-		while (++i < map->height)
-			free(map->arr[i]);
-	i = -1;
-	while (++i < map->height)
-		free(map->verify_arr[i]);
-	exit(code);
-}
 
 int	handle_key(int keycode, t_map *map)
 {

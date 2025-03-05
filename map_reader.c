@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 14:00:19 by danimart          #+#    #+#             */
-/*   Updated: 2025/03/05 14:54:30 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/03/05 16:28:03 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ void	process_raw_map(t_map map, char *raw_map)
 		line++;
 	}
 	free(raw_map);
-	// exit_sl(&map, NULL, 0); TODO: Fix double free
-	exit(0);
+	exit_sl(&map, NULL, 0); // TODO: Fix double free
+	//exit(0);
 }
 
 int	count_lines(char *raw_map)
@@ -73,21 +73,33 @@ int	count_lines(char *raw_map)
 	return (lines);
 }
 
+char	*ft_calloc(int amount)
+{
+	char	*res;
+
+	res = malloc(amount * sizeof(char));
+	if (res == NULL)
+		return (NULL);
+	while (amount >= 0)
+	{
+		res[amount] = '\0';
+		amount--;
+	}
+	return (res);
+}
+
 void	read_map_file(int fd, char *raw_map)
 {
 	int		read_res;
 	char	*read_buff;
-	int		len;
 
 	if (fd < 0)
 		exit_sl(NULL, MAP_OPEN_ERR, MAP_OPEN_ERRC);
 	read_res = 1;
-	len = 0;
 	while (read_res > 0)
 	{
-		read_buff = malloc((BUFFER_SIZE + 1) * sizeof(char));
+		read_buff = ft_calloc(BUFFER_SIZE + 1);
 		read_res = read(fd, read_buff, BUFFER_SIZE);
-		len += read_res;
 		if (read_res == -1)
 		{
 			free(raw_map);
@@ -96,7 +108,6 @@ void	read_map_file(int fd, char *raw_map)
 		}
 		raw_map = ft_strjoin(raw_map, read_buff, 1);
 	}
-	raw_map[len] = '\0';
 	close(fd);
 	process_raw_map(init_map(count_lines(raw_map)), raw_map);
 }
