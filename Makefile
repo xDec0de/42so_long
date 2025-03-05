@@ -6,7 +6,7 @@
 #    By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/05 10:19:42 by daniema3          #+#    #+#              #
-#    Updated: 2025/03/04 17:27:28 by daniema3         ###   ########.fr        #
+#    Updated: 2025/03/05 14:41:13 by daniema3         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,6 @@ CFLAGS = -Wall -Wextra -Werror -g3 -I minilibx-linux
 MLXFLAGS = -L minilibx-linux/ -lmlx -lXext -lX11
 
 SRCS =	strutils.c\
-		gnl.c\
 		printf/ft_printf.c\
 		printf/write_num.c\
 		printf/write_txt.c\
