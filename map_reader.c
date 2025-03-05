@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 14:00:19 by danimart          #+#    #+#             */
-/*   Updated: 2025/03/05 18:35:16 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/03/05 18:51:44 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,17 +41,18 @@ t_map	*init_map(int height)
 
 void	process_raw_map(t_map *map, char *raw_map)
 {
-	int	line;
-	int	last_nl;
-	char	*l;
+	int		line;
+	int		last_nl;
+	char	*tmp;
 
 	line = 0;
 	last_nl = sl_strchr(raw_map, '\n');
 	while (last_nl != -1)
 	{
-		l = sl_substr(raw_map, 0, last_nl);
-		map->arr[line] = l;
+		map->arr[line] = sl_substr(raw_map, 0, last_nl);
+		tmp = raw_map;
 		raw_map = sl_substr(raw_map, last_nl + 1, sl_strlen(raw_map, 0));
+		free(tmp);
 		last_nl = sl_strchr(raw_map, '\n');
 		line++;
 	}

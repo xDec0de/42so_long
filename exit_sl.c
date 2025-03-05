@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 16:30:37 by daniema3          #+#    #+#             */
-/*   Updated: 2025/03/05 16:58:03 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/03/05 18:39:46 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ void	free_arrays(t_map *map)
 	{
 		while (i < map->height)
 		{
-			ft_printf("Free map->arr[%d] (%s)\n", i, map->arr[i]);
 			free(map->arr[i]);
 			i++;
 		}
