@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 12:23:44 by daniema3          #+#    #+#             */
-/*   Updated: 2025/03/05 18:26:18 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/03/05 18:57:05 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ typedef struct s_assets
 typedef struct s_map
 {
 	char		**arr;
-	char		*verify_arr[MAX_MAP_HEIGHT];
+	char		**verify_arr;
 	int			height;
 	int			length;
 	int			keys;
@@ -123,7 +123,7 @@ int		handle_key(int keycode, t_map *map);
 void	parse_map_input(char **args);
 
 // map_validator.c
-void	validate_map_content(t_map map);
+void	validate_map_content(t_map *map);
 
 // asset_handler.c
 void	update_asset(t_map *map, int x, int y);

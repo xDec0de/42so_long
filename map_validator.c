@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 20:55:46 by daniema3          #+#    #+#             */
-/*   Updated: 2025/03/05 18:36:15 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/03/05 19:38:52 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	create_verify_array(t_map *map)
 
 	x = 0;
 	y = 0;
+	map->verify_arr = malloc((map->height + 1) * sizeof(char *));
 	while (y < map->height)
 	{
 		x = 0;
@@ -56,24 +57,24 @@ void	create_verify_array(t_map *map)
 
 void	validate_map_structure(t_map *map)
 {
-	int		i;
-	int		j;
+	int		y;
+	int		x;
 
-	i = 0;
-	create_verify_array(map);
-	while (i < map->height)
+	y = 0;
+	while (y < map->height)
 	{
-		j = 0;
-		while (j < map->length && (i == 0 || i == map->height - 1))
+		x = 0;
+		while (x < map->length && (y == 0 || y == map->height - 1))
 		{
-			if (map->arr[i][j] != '1')
+			if (map->arr[y][x] != '1')
 				exit_sl(map, MAP_STRCT_ERR, 9);
-			j++;
+			x++;
 		}
-		if (map->arr[i][0] != '1' || map->arr[i][map->length - 1] != '1')
+		if (map->arr[y][0] != '1' || map->arr[y][map->length - 1] != '1')
 			exit_sl(map, MAP_STRCT_ERR, 9);
-		i++;
+		y++;
 	}
+	create_verify_array(map);
 	if (!(validate_map_gameplay(map, map->pl.x, map->pl.y) == map->keys + 1))
 		exit_sl(map, MAP_IMPOSSIBLE, 11);
 	draw_map(map);
@@ -107,31 +108,31 @@ void	validate_map_objects(t_map *map)
 	validate_map_structure(map);
 }
 
-void	validate_map_content(t_map map)
+void	validate_map_content(t_map *map)
 {
-	int	i;
-	int	j;
+	int	y;
+	int	x;
 
-	map.length = sl_strlen(map.arr[0], 1);
-	i = 1;
-	while (i < map.height)
+	map->length = sl_strlen(map->arr[0], 1);
+	y = 1;
+	while (y < map->height)
 	{
-		j = 0;
-		if (sl_strlen(map.arr[i], 1) != map.length)
-			exit_sl(&map, MAP_LEN_ERR, 7);
-		while (map.arr[i][j] != '\0' && map.arr[i][j] != '\n')
+		x = 0;
+		if (sl_strlen(map->arr[y], 1) != map->length)
+			exit_sl(map, MAP_LEN_ERR, 7);
+		while (map->arr[y][x] != '\0' && map->arr[y][x] != '\n')
 		{
-			if (map.arr[i][j] != '0' && map.arr[i][j] != '1'
-				&& map.arr[i][j] != 'C' && map.arr[i][j] != 'E'
-				&& map.arr[i][j] != 'P')
-				exit_sl(&map, MAP_CONTENT_ERR, 4);
-			j++;
+			if (map->arr[y][x] != '0' && map->arr[y][x] != '1'
+				&& map->arr[y][x] != 'C' && map->arr[y][x] != 'E'
+				&& map->arr[y][x] != 'P')
+				exit_sl(map, MAP_CONTENT_ERR, 4);
+			x++;
 		}
-		i++;
+		y++;
 	}
-	if (map.height == 0 || map.length == 0)
-		exit_sl(&map, MAP_EMPTY_ERR, 5);
-	else if (map.length > MAX_MAP_LENGTH)
-		exit_sl(&map, MAP_SIZE_ERR, 6);
-	validate_map_objects(&map);
+	if (map->height == 0 || map->length == 0)
+		exit_sl(map, MAP_EMPTY_ERR, 5);
+	else if (map->length > MAX_MAP_LENGTH)
+		exit_sl(map, MAP_SIZE_ERR, 6);
+	validate_map_objects(map);
 }

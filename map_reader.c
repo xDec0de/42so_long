@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 14:00:19 by danimart          #+#    #+#             */
-/*   Updated: 2025/03/05 18:51:44 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/03/05 19:46:18 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ t_map	*init_map(int height)
 	map->arr = malloc((height + 1) * sizeof(char *));
 	if (map->arr == NULL)
 		exit_sl(NULL, MALLOC_ERR, MALLOC_ERRC);
+	map->verify_arr = NULL;
 	map->height = height;
 	map->length = 0;
 	map->keys = 0;
@@ -56,8 +57,9 @@ void	process_raw_map(t_map *map, char *raw_map)
 		last_nl = sl_strchr(raw_map, '\n');
 		line++;
 	}
+	map->arr[line] = sl_strdup(raw_map);
 	free(raw_map);
-	exit_sl(map, NULL, 0);
+	validate_map_content(map);
 }
 
 int	count_lines(char *raw_map)
@@ -73,7 +75,7 @@ int	count_lines(char *raw_map)
 			lines++;
 		i++;
 	}
-	return (lines);
+	return (lines + 1);
 }
 
 void	read_map_file(int fd, char *raw_map)
