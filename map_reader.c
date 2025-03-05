@@ -6,18 +6,20 @@
 /*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 14:00:19 by danimart          #+#    #+#             */
-/*   Updated: 2025/03/05 01:16:20 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/03/05 01:35:45 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-t_map	init_map(void)
+t_map	init_map(int height)
 {
 	t_map	map;
 
-	map.arr = NULL;
-	map.height = 0;
+	map.arr = malloc(height);
+	if (map.arr == NULL)
+		exit_sl(NULL, "MALLOC_FAIL_PLACEHOLDER\n", -1); // TODO: Add a proper error message
+	map.height = height;
 	map.length = 0;
 	map.keys = 0;
 	map.exits = 0;
@@ -34,19 +36,13 @@ t_map	init_map(void)
 	return (map);
 }
 
-void	process_raw_map(t_map map, char *raw_map, int lines)
+void	process_raw_map(t_map map, char *raw_map)
 {
 	int	line;
 	int	last_nl;
 
 	line = 0;
 	last_nl = 0;
-	map.arr = malloc(lines);
-	if (map.arr == NULL)
-	{
-		free(raw_map);
-		exit_sl(&map, "MALLOC_FAIL_PLACEHOLDER\n", -1); // TODO: Add a proper error message
-	}
 	ft_printf("Raw map (From read):\n%s\n\nTo map array:\n", raw_map);
 	while (last_nl != -1)
 	{
@@ -57,7 +53,8 @@ void	process_raw_map(t_map map, char *raw_map, int lines)
 		line++;
 	}
 	free(raw_map);
-	exit_sl(&map, NULL, 0);
+	//exit_sl(&map, NULL, 0);
+	exit(0);
 }
 
 int	count_lines(char *raw_map)
@@ -99,7 +96,7 @@ void	read_map_file(int fd)
 		raw_map = ft_strjoin(raw_map, read_buff);
 	}
 	close(fd);
-	process_raw_map(init_map(), raw_map, count_lines(raw_map));
+	process_raw_map(init_map(count_lines(raw_map)), raw_map);
 }
 
 /*void	read_map_file(char *map_name)
