@@ -6,35 +6,17 @@
 /*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 20:55:46 by daniema3          #+#    #+#             */
-/*   Updated: 2025/03/05 19:52:31 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/03/06 14:06:27 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	validate_map_gameplay(t_map *map, int x, int y)
-{
-	int	points;
-
-	points = 0;
-	if (map->verify_arr[y][x] == '1')
-		return (0);
-	if (map->verify_arr[y][x] == 'E' || map->verify_arr[y][x] == 'C')
-		points++;
-	map->verify_arr[y][x] = '1';
-	points += validate_map_gameplay(map, x + 1, y);
-	points += validate_map_gameplay(map, x - 1, y);
-	points += validate_map_gameplay(map, x, y + 1);
-	points += validate_map_gameplay(map, x, y - 1);
-	return (points);
-}
-
 void	create_verify_array(t_map *map)
 {
-	int		x;
-	int		y;
+	int	x;
+	int	y;
 
-	x = 0;
 	y = 0;
 	map->verify_arr = malloc((map->height + 1) * sizeof(char *));
 	while (y < map->height)
@@ -57,8 +39,8 @@ void	create_verify_array(t_map *map)
 
 void	validate_map_structure(t_map *map)
 {
-	int		y;
-	int		x;
+	int	y;
+	int	x;
 
 	y = 0;
 	while (y < map->height)
@@ -75,16 +57,16 @@ void	validate_map_structure(t_map *map)
 		y++;
 	}
 	create_verify_array(map);
-	if (!(validate_map_gameplay(map, map->pl.x, map->pl.y) == map->keys + 1))
+	if (!(validate_map_gameplay(map) == map->keys + 1))
 		exit_sl(map, MAP_IMPOSSIBLE, 11);
 	draw_map(map);
 }
 
 void	validate_map_objects(t_map *map)
 {
-	int		y;
-	int		x;
-	int		player_amount;
+	int	y;
+	int	x;
+	int	player_amount;
 
 	y = 0;
 	player_amount = 0;
