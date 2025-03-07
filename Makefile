@@ -6,15 +6,16 @@
 #    By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/05 10:19:42 by daniema3          #+#    #+#              #
-#    Updated: 2025/03/07 14:55:50 by daniema3         ###   ########.fr        #
+#    Updated: 2025/03/07 15:13:34 by daniema3         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
+MLX_PATH = minilibx-linux
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -g3 -I minilibx-linux
-MLXFLAGS = -L minilibx-linux/ -lmlx -lXext -lX11
+CFLAGS = -Wall -Wextra -Werror -I ${MLX_PATH}
+MLXFLAGS = -L ${MLX_PATH}/ -lmlx -lXext -lX11
 
 SRCS =	util/sl_calloc.c\
 		util/sl_strchr.c\
@@ -40,15 +41,23 @@ H_FILES =	so_long.h\
 
 OBJS = $(SRCS:%.c=%.o)
 
+MLX_MAKEFILE_GEN_FILES =	Makefile.gen\
+							${MLX_PATH}/Makefile.gen\
+							${MLX_PATH}/test/Makefile.gen
+
+
 all: $(NAME)
 
 $(NAME): $(OBJS)
+	make -C ${MLX_PATH}
 	$(CC) $(CFLAGS) $(OBJS) $(MLXFLAGS) -o $(NAME)
 
 clean:
+	make clean -C ${MLX_PATH}
+	rm -rf $(MLX_MAKEFILE_GEN_FILES)
 	rm -rf $(OBJS)
 
-fclean:
+fclean: clean
 	rm -rf $(OBJS) $(NAME)
 
 re: fclean $(NAME)
