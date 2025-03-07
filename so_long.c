@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 10:20:33 by daniema3          #+#    #+#             */
-/*   Updated: 2025/03/05 16:41:02 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/03/07 14:37:22 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	handle_key(int keycode, t_map *map)
 	else if (keycode == KEY_RIGHT || keycode == KEY_D)
 		has_moved = move_player(map, 1, 0);
 	if (has_moved)
-		ft_printf("Movements: %d\n", ++map->movements);
+		ft_printf(MOVEMENT_MSG, ++map->movements);
 	return (0);
 }
 

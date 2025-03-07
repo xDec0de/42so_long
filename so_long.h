@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 12:23:44 by daniema3          #+#    #+#             */
-/*   Updated: 2025/03/07 14:04:06 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/03/07 14:38:11 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ wrong name maybe?\e[0m\n"
 \e[0;31mMap is impossible to win, please nerf\e[1;30m.\e[0m\n"
 
 # define MLX_ERR "Error\n\e[0;31mMlx error\e[1;30m.\e[0m\n"
+
+# define MOVEMENT_MSG "\e[0;34mMovements\e[1;30m: \e[0;33m%d\e[0m\n"
 
 # define WINDOW_TITLE "so_long"
 
