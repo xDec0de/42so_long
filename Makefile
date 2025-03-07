@@ -6,7 +6,7 @@
 #    By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/05 10:19:42 by daniema3          #+#    #+#              #
-#    Updated: 2025/03/06 14:07:36 by daniema3         ###   ########.fr        #
+#    Updated: 2025/03/07 14:55:50 by daniema3         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,10 @@ SRCS =	util/sl_calloc.c\
 		player_handler.c\
 		exit_sl.c
 
+H_FILES =	so_long.h\
+			util/sl_utils.h\
+			util/printf/ft_printf.h
+
 OBJS = $(SRCS:%.c=%.o)
 
 all: $(NAME)
@@ -50,6 +54,6 @@ fclean:
 re: fclean $(NAME)
 
 norm:
-	norminette ${SRCS} so_long.h
+	norminette ${SRCS} ${H_FILES}
 
 .PHONY: all clean fclean re norm
