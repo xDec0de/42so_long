@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 12:23:44 by daniema3          #+#    #+#             */
-/*   Updated: 2025/03/07 14:38:11 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/03/07 14:41:52 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,17 +87,17 @@ wrong name maybe?\e[0m\n"
 
 typedef struct s_player
 {
-	int		x;
-	int		y;
+	int	x;
+	int	y;
 }				t_player;
 
 typedef struct s_assets
 {
-	void		*wall;
-	void		*key;
-	void		*bg;
-	void		*exit;
-	void		*player;
+	void	*wall;
+	void	*key;
+	void	*bg;
+	void	*exit;
+	void	*player;
 }				t_assets;
 
 typedef struct s_map
